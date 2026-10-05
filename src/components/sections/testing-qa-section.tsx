@@ -158,21 +158,16 @@ export function TestingQaSection({ locale = 'fr', className }: TestingQaSectionP
         {/* 1. SECTION HEADER: Major Differentiator */}
         <div className="max-w-4xl space-y-6 mb-16 sm:mb-20">
           
-          {/* Technical Telemetry Eyebrow */}
+          {/* Clean section eyebrow */}
           <motion.div
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={transitionFast}
-            className="flex items-center gap-2.5"
           >
-            <div className="flex items-center gap-2 px-3 py-1 rounded-[6px] bg-[#0E121B] border border-[#1D68F2]/30 text-xs font-mono text-[#60A5FA]">
-              <ShieldCheck className="size-3.5 text-[#1D68F2]" />
-              <span className="font-semibold uppercase tracking-wider">
-                CENTRE D&apos;EXPERTISE // INGÉNIERIE DU TEST &amp; QA
-              </span>
-            </div>
-            <span className="h-[1px] w-12 bg-[#1D68F2]/40 hidden sm:block" />
+            <span className="text-xs font-mono font-semibold tracking-[0.2em] uppercase text-[#60A5FA]">
+              INGÉNIERIE DU TEST &amp; QA
+            </span>
           </motion.div>
 
           {/* Differentiating Headline */}
@@ -306,9 +301,6 @@ export function TestingQaSection({ locale = 'fr', className }: TestingQaSectionP
         {/* 3. THE 8 QA EXPERTISE DISCIPLINES */}
         <div className="space-y-8">
           <div className="max-w-2xl space-y-2">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-[#1D68F2] font-semibold">
-              DOMAINE TECHNIQUE // COUVERTURE DES RISQUES
-            </span>
             <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#F8FAFC]">
               8 disciplines d’ingénierie du test
             </h3>
@@ -330,13 +322,8 @@ export function TestingQaSection({ locale = 'fr', className }: TestingQaSectionP
                   className="p-6 rounded-[16px] bg-[#0E121B] border border-white/[0.06] hover:border-[#1D68F2]/45 hover:bg-[#111622] transition-all duration-200 flex flex-col justify-between group"
                 >
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <div className="p-2 rounded-[8px] bg-[#161B28] border border-white/[0.06] text-[#60A5FA] group-hover:border-[#1D68F2]/40 transition-colors">
-                        <IconComp className="size-4 text-[#1D68F2]" />
-                      </div>
-                      <span className="text-[9.5px] font-mono text-[#758195] uppercase px-2 py-0.5 rounded bg-[#090B10]">
-                        {qa.code}
-                      </span>
+                    <div className="p-2 rounded-[8px] bg-[#161B28] border border-white/[0.06] text-[#60A5FA] w-fit group-hover:border-[#1D68F2]/40 transition-colors">
+                      <IconComp className="size-4 text-[#1D68F2]" />
                     </div>
 
                     <h4 className="font-display font-bold text-base text-[#F8FAFC] group-hover:text-white transition-colors">
@@ -346,11 +333,6 @@ export function TestingQaSection({ locale = 'fr', className }: TestingQaSectionP
                     <p className="text-xs text-[#8B95A5] leading-relaxed font-light">
                       {qa.description}
                     </p>
-                  </div>
-
-                  <div className="pt-4 mt-4 border-t border-white/[0.04] flex items-center justify-between text-[11px] font-mono text-[#758195] group-hover:text-[#60A5FA] transition-colors">
-                    <span>MÉTHODOLOGIE</span>
-                    <span>&bull;&bull;&bull;</span>
                   </div>
                 </motion.div>
               );

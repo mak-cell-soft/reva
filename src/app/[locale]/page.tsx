@@ -27,14 +27,14 @@ export default async function HomePage({ params }: PageProps) {
       {/* 1. Official Homepage Hero Section */}
       <HeroSection locale={locale} />
 
-      {/* 2. Positioning Section: De l'idée à la solution. De la solution à la qualité. */}
+      {/* 2. Flagship Product Section: Élancé ERP (Main product developed by RÉVA Consulting) */}
+      <ElanceErpSection locale={locale} />
+
+      {/* 3. Positioning Section: De l'idée à la solution. De la solution à la qualité. */}
       <PositioningSection locale={locale} />
 
-      {/* 3. Main Services Section: Nos expertises */}
+      {/* 4. Main Services Section: Nos expertises */}
       <ServicesSection locale={locale} />
-
-      {/* 4. Flagship Product Section: Élancé ERP */}
-      <ElanceErpSection locale={locale} />
 
       {/* 5. Differentiator Section: Software Quality & Testing */}
       <TestingQaSection locale={locale} />

@@ -92,11 +92,9 @@ export function MethodologySection({ className }: MethodologySectionProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={transitionFast}
-            className="flex items-center gap-2.5"
           >
-            <span className="size-1.5 rounded-full bg-[#C59B45]" />
-            <span className="text-[11px] font-mono uppercase tracking-[0.18em] text-[#C59B45] font-semibold">
-              CADRE MÉTHODOLOGIQUE // DÉMARCHE INGÉNIERIE
+            <span className="text-xs font-mono font-semibold tracking-[0.2em] uppercase text-[#DFC489]">
+              MÉTHODOLOGIE
             </span>
           </motion.div>
 

@@ -78,22 +78,15 @@ export function HeroSection({ locale = 'fr', className }: HeroSectionProps) {
           {/* LEFT COLUMN: Editorial & Strategic Value Proposition (Lg: 7 cols) */}
           <div className="lg:col-span-7 flex flex-col justify-center space-y-7 sm:space-y-8">
             
-            {/* Eyebrow: Professional, technical, restrained */}
+            {/* Clean, confident brand identifier */}
             <motion.div
               initial={shouldReduceMotion ? {} : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ...transitionFast, delay: 0.05 }}
-              className="inline-flex items-center gap-2.5 self-start"
             >
-              <div className="flex items-center gap-2 px-3 py-1 rounded-[6px] bg-[#111318]/90 border border-white/[0.08] shadow-[0_1px_3px_rgba(0,0,0,0.5)] backdrop-blur-sm">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1D68F2] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1D68F2]" />
-                </span>
-                <span className="text-[10.5px] sm:text-[11px] font-mono font-medium tracking-[0.12em] uppercase text-[#CAD0DB]">
-                  RÉVA CONSULTING — SOFTWARE &amp; QUALITY ENGINEERING
-                </span>
-              </div>
+              <span className="text-xs font-mono font-semibold tracking-[0.2em] uppercase text-[#DFC489]">
+                RÉVA CONSULTING
+              </span>
             </motion.div>
 
             {/* Primary Headline: Bold, commanding, split for readability */}
@@ -184,18 +177,8 @@ export function HeroSection({ locale = 'fr', className }: HeroSectionProps) {
 
           </div>
 
-          {/* RIGHT COLUMN: Clear visual space allowing the Glass RÉVA Logo to be prominently visible */}
-          <div className="lg:col-span-5 hidden lg:flex flex-col items-end justify-end h-full min-h-[420px] pointer-events-none select-none pr-4 pb-6">
-            <motion.div
-              initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ ...transitionFast, delay: 0.35 }}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#111318]/70 border border-white/[0.08] backdrop-blur-md text-[10.5px] font-mono text-[#8E9AA8] shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
-            >
-              <span className="size-1.5 rounded-full bg-[#C59B45]" />
-              <span>EMBLÈME OFFICIEL // VERRE &amp; OR CHAMPAGNE</span>
-            </motion.div>
-          </div>
+          {/* RIGHT COLUMN: Generous visual negative space letting the Photographic Glass RÉVA Logo command the atmosphere */}
+          <div className="lg:col-span-5 hidden lg:block pointer-events-none select-none" />
 
         </div>
       </div>

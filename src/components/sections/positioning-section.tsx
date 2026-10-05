@@ -76,17 +76,15 @@ export function PositioningSection({ className }: PositioningSectionProps) {
           {/* LEFT COLUMN: Large Editorial Typography */}
           <div className="lg:col-span-6 lg:sticky lg:top-32 space-y-6 sm:space-y-8">
             
-            {/* Architectural Eyebrow */}
+            {/* Clean section identifier */}
             <motion.div
               initial={shouldReduceMotion ? {} : { opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={transitionFast}
-              className="inline-flex items-center gap-2.5"
             >
-              <span className="size-1.5 rounded-full bg-[#C59B45]" />
-              <span className="text-[11px] font-mono uppercase tracking-[0.18em] text-[#C59B45] font-semibold">
-                POSITIONNEMENT STRATÉGIQUE
+              <span className="text-xs font-mono font-semibold tracking-[0.2em] uppercase text-[#DFC489]">
+                À PROPOS
               </span>
             </motion.div>
 

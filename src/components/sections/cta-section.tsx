@@ -77,9 +77,9 @@ export function CtaSection({ locale = 'fr', className }: CtaSectionProps) {
         >
           {/* Foreground Content Stack */}
           <div className="relative z-10 max-w-4xl mx-auto space-y-8 sm:space-y-10">
-            {/* Professional Brand Eyebrow with Official Brand Mark */}
-            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-[#12151D] border border-white/[0.08] shadow-inner">
-              <div className="relative h-5 w-auto aspect-[1599/1076] overflow-hidden rounded-[4px] shrink-0">
+            {/* Clean brand lockup */}
+            <div className="inline-flex items-center gap-3">
+              <div className="relative h-6 w-auto aspect-[1599/1076] overflow-hidden rounded-[4px] shrink-0">
                 <Image
                   src="/images/logos/logo-reva.jpeg"
                   alt={brandConfig.name}
@@ -88,8 +88,8 @@ export function CtaSection({ locale = 'fr', className }: CtaSectionProps) {
                   className="h-full w-auto object-contain"
                 />
               </div>
-              <span className="text-[11px] font-mono uppercase tracking-[0.16em] text-[#C59B45] font-medium">
-                ENGAGEMENT &amp; PARTENARIAT // RÉVA CONSULTING
+              <span className="text-xs font-mono font-semibold tracking-[0.2em] uppercase text-[#DFC489]">
+                RÉVA CONSULTING
               </span>
             </div>
 
