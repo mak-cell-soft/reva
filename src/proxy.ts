@@ -28,7 +28,7 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Skip static assets, images, video, and Next.js internals
-    '/((?!_next/static|_next/image|images|favicon.ico|robots.txt|sitemap.xml).*)',
+    // Skip static assets, images, video, html verification files, and Next.js internals
+    '/((?!_next/static|_next/image|images|favicon.ico|robots.txt|sitemap.xml|.*\\.(?:html|txt|xml|ico|png|jpg|jpeg|svg|webp)$).*)',
   ],
 };

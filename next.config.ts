@@ -3,6 +3,7 @@ import path from "path";
 
 // RÉVA Consulting Next.js configuration
 const nextConfig: NextConfig = {
+  output: "standalone",
   // Turbopack explicit root
   turbopack: {
     root: path.join(__dirname),

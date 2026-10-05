@@ -112,7 +112,7 @@ export function Navbar({ locale = 'fr' }: NavbarProps) {
           {/* Left: Dedicated RÉVA Navbar Brand Logo */}
           <Link
             href={`/${locale}`}
-            className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45]/80 shrink-0 select-none"
+            className="flex items-center self-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45]/80 shrink-0 select-none py-0.5 transition-opacity hover:opacity-90"
             aria-label={`${brandConfig.name} — Accueil`}
           >
             <Image
@@ -120,7 +120,7 @@ export function Navbar({ locale = 'fr' }: NavbarProps) {
               alt={brandConfig.name}
               width={2103}
               height={748}
-              className="h-[34px] sm:h-[38px] lg:h-[44px] xl:h-[46px] w-auto object-contain"
+              className="h-[38px] sm:h-[42px] lg:h-[48px] xl:h-[50px] w-auto object-contain"
               priority
             />
           </Link>
@@ -242,6 +242,27 @@ export function Navbar({ locale = 'fr' }: NavbarProps) {
               className="fixed top-[64px] sm:top-[72px] left-0 right-0 z-50 lg:hidden px-4 pb-6 pt-2"
             >
               <div className="bg-[#111318] border border-white/[0.08] rounded-[16px] shadow-[0_16px_40px_rgba(0,0,0,0.85)] p-5 space-y-4 max-w-md mx-auto">
+                {/* Mobile Drawer Brand Anchor */}
+                <div className="flex items-center justify-between pb-3 border-b border-white/[0.06]">
+                  <Link
+                    href={`/${locale}`}
+                    onClick={handleNavClick}
+                    className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45]/80 select-none"
+                    aria-label={`${brandConfig.name} — Accueil`}
+                  >
+                    <Image
+                      src="/images/logos/logo-reva-navbar.png"
+                      alt={brandConfig.name}
+                      width={2103}
+                      height={748}
+                      className="h-[34px] sm:h-[38px] w-auto object-contain"
+                    />
+                  </Link>
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#758195]">
+                    Menu
+                  </span>
+                </div>
+
                 {/* Nav Links List */}
                 <nav className="flex flex-col space-y-1" aria-label="Liens du menu mobile">
                   {navItems.map((item) => {
