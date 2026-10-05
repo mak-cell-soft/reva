@@ -62,27 +62,25 @@ export function Footer({ locale = 'fr', className }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-16 border-b border-white/[0.06]">
           
           {/* Col 1: Brand, Tagline & Purpose (4 cols) */}
-          <div className="lg:col-span-4 space-y-6">
-            {/* Primary Official Brand Logo */}
+          <div className="lg:col-span-4 space-y-5">
+            {/* Primary Official Brand Logo & Full Identity */}
             <div className="space-y-3">
               <Link
                 href={`/${locale}`}
-                className="inline-flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45] rounded-[8px]"
+                className="inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45] rounded-[6px]"
                 aria-label={`${brandConfig.name} — Accueil`}
               >
-                <div className="relative h-12 sm:h-14 w-auto aspect-[1599/1076] rounded-[8px] overflow-hidden border border-white/[0.08] group-hover:border-[#C59B45]/60 transition-colors shadow-[0_2px_14px_rgba(0,0,0,0.7)] shrink-0 bg-[#0E1118]">
-                  <Image
-                    src="/images/logos/logo-reva.jpeg"
-                    alt={brandConfig.name}
-                    width={1599}
-                    height={1076}
-                    className="h-full w-auto object-contain"
-                  />
-                </div>
+                <Image
+                  src="/images/logos/logo-reva-navbar.png"
+                  alt={brandConfig.name}
+                  width={2103}
+                  height={748}
+                  className="h-10 sm:h-11 w-auto object-contain"
+                />
               </Link>
-              <div className="text-[11px] font-mono tracking-widest uppercase text-[#C59B45] font-medium">
-                {brandConfig.tagline}
-              </div>
+              <p className="text-xs sm:text-[13px] font-medium text-[#DFC489] tracking-wide leading-snug">
+                RéVA – Consulting : Réaliser Votre Ambition Consulting
+              </p>
             </div>
 
             <p className="text-xs sm:text-sm text-[#8E9AA8] leading-relaxed max-w-sm">
