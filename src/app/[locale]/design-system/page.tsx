@@ -1,6 +1,7 @@
 // NOTE: RÉVA Consulting Design System & UI Tokens Showcase.
 // Preserved as an internal/developer reference showcase.
 import * as React from 'react';
+import Image from 'next/image';
 import { brandConfig } from '@/lib/brand.config';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -62,10 +63,10 @@ export default function DesignSystemPage() {
         <section className="space-y-8">
           <div className="border-b border-white/[0.06] pb-4">
             <h2 className="text-2xl sm:text-3xl font-bold text-[#F8FAFC]">
-              1. Identité de Marque & Emblèmes
+              1. Identité de Marque & Produits Officiels
             </h2>
             <p className="text-sm text-[#758195] mt-1">
-              Rendu vectoriel haute précision et intégration de l&apos;emblème officiel 3D.
+              RÉVA Consulting (Éditeur logiciel) &amp; Élancé ERP (Produit logiciel phare).
             </p>
           </div>
 
@@ -74,17 +75,17 @@ export default function DesignSystemPage() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <Badge variant="gold" indicator="gold">
-                    Vector SVG
+                    RÉVA Consulting
                   </Badge>
-                  <span className="text-xs font-mono text-[#758195]">BrandLogo variant=&quot;vector&quot;</span>
+                  <span className="text-xs font-mono text-[#758195]">/images/logos/logo-reva.jpeg</span>
                 </div>
-                <CardTitle className="mt-4">Lockup Vectoriel Scalable</CardTitle>
+                <CardTitle className="mt-4">Marque Principale Officielle</CardTitle>
                 <CardDescription>
-                  Génération SVG pure respectant les pixels dorés, l&apos;arc laser bleu et la typographie.
+                  Emblème officiel de RÉVA Consulting, conservant son format et ses proportions d&apos;origine.
                 </CardDescription>
               </CardHeader>
               <CardContent className="pt-6 border-t border-white/[0.04] bg-[#0B0D11]/60 flex items-center justify-center p-12">
-                <BrandLogo size="lg" variant="vector" showTagline={true} />
+                <BrandLogo size="lg" />
               </CardContent>
             </Card>
 
@@ -92,17 +93,33 @@ export default function DesignSystemPage() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <Badge variant="blue" indicator="blue">
-                    Emblem 3D
+                    Élancé ERP
                   </Badge>
-                  <span className="text-xs font-mono text-[#758195]">BrandLogo variant=&quot;emblem&quot;</span>
+                  <span className="text-xs font-mono text-[#758195]">/images/logos/logo-elance.svg</span>
                 </div>
-                <CardTitle className="mt-4">Emblème Studio Officiel</CardTitle>
+                <CardTitle className="mt-4">Logo Produit Officiel</CardTitle>
                 <CardDescription>
-                  Intégration optimisée du badge physique avec cadre chanfreiné et reflets studio.
+                  Logo vectoriel officiel d&apos;Élancé ERP, progiciel phare développé par RÉVA Consulting.
                 </CardDescription>
               </CardHeader>
               <CardContent className="pt-6 border-t border-white/[0.04] bg-[#0B0D11]/60 flex items-center justify-center p-12">
-                <BrandLogo size="lg" variant="emblem" showTagline={true} />
+                <div className="flex items-center gap-3">
+                  <Image
+                    src="/images/logos/logo-elance.svg"
+                    alt="Logo officiel Élancé ERP"
+                    width={48}
+                    height={48}
+                    className="size-12 object-contain"
+                  />
+                  <div className="flex flex-col">
+                    <span className="text-xl font-bold tracking-tight text-white font-sans">
+                      Élancé<span className="text-[#3B82F6]">.</span>
+                    </span>
+                    <span className="text-[10px] uppercase font-mono tracking-widest text-[#758195]">
+                      ERP Suite
+                    </span>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>

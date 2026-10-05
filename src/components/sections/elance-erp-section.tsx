@@ -6,6 +6,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import {
@@ -22,7 +23,6 @@ import {
   Truck,
   FileCheck2,
   Workflow,
-  Sparkles,
   ShieldCheck,
   ChevronRight,
 } from 'lucide-react';
@@ -137,7 +137,7 @@ export function ElanceErpSection({ locale = 'fr', className }: ElanceSectionProp
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         
         {/* 1. STRATEGIC POSITIONING HEADER */}
-        <div className="max-w-4xl space-y-6 mb-16 sm:mb-20">
+        <div className="max-w-4xl space-y-7 mb-16 sm:mb-20">
           
           {/* Strategic Relationship Breadcrumb: RÉVA → Élancé ERP */}
           <motion.div
@@ -151,32 +151,47 @@ export function ElanceErpSection({ locale = 'fr', className }: ElanceSectionProp
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-[6px] bg-[#111318] border border-white/[0.08] text-xs font-mono text-[#CAD0DB]">
               <span className="size-1.5 rounded-full bg-[#C59B45]" />
               <span className="font-semibold text-[#F8FAFC]">RÉVA CONSULTING</span>
-              <span className="text-[#758195]">{'//'} ÉDITEUR &amp; DÉVELOPPEUR</span>
+              <span className="text-[#758195]">{'//'} ÉDITEUR DE LOGICIELS</span>
             </div>
 
             <ChevronRight className="size-3.5 text-[#545F72]" />
 
             {/* Flagship Product Marker */}
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-[6px] bg-[#C59B45]/10 border border-[#C59B45]/30 text-xs font-mono text-[#DFC489]">
-              <Sparkles className="size-3.5 text-[#C59B45]" />
-              <span>PRODUIT PHARE D&apos;ENTREPRISE</span>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-[6px] bg-[#3B82F6]/10 border border-[#3B82F6]/30 text-xs font-mono text-[#60A5FA]">
+              <span>PRODUIT LOGICIEL PRINCIPAL</span>
             </div>
           </motion.div>
 
-          {/* Product Headline */}
+          {/* Official Élancé Logo & Headline Presentation */}
           <motion.div
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ ...transitionFast, delay: 0.08 }}
-            className="space-y-3"
+            className="space-y-4"
           >
-            <h2 className="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#F8FAFC]">
-              Élancé <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B45] via-[#DFC489] to-[#CAD0DB]">ERP</span>
-            </h2>
-            <p className="font-display text-xl sm:text-2xl lg:text-3xl font-medium text-[#E2E6ED] tracking-tight">
-              L&apos;ERP conçu pour simplifier la gestion des entreprises.
-            </p>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-6">
+              {/* Official SVG Asset */}
+              <div className="relative size-16 sm:size-20 shrink-0 p-2.5 rounded-[18px] bg-[#0E131E] border border-[#3B82F6]/30 shadow-[0_4px_28px_rgba(29,104,242,0.25)]">
+                <Image
+                  src="/images/logos/logo-elance.svg"
+                  alt="Logo officiel Élancé ERP"
+                  width={64}
+                  height={64}
+                  className="size-full object-contain"
+                  priority
+                />
+              </div>
+
+              <div>
+                <h2 className="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#F8FAFC]">
+                  Élancé <span className="text-[#3B82F6]">ERP</span>
+                </h2>
+                <p className="font-display text-xl sm:text-2xl text-[#DFC489] font-medium tracking-tight mt-1">
+                  L&apos;ERP développé par <span className="text-[#F8FAFC] font-semibold">RÉVA Consulting</span>
+                </p>
+              </div>
+            </div>
           </motion.div>
 
           {/* Narrative Scope */}
@@ -187,10 +202,10 @@ export function ElanceErpSection({ locale = 'fr', className }: ElanceSectionProp
             transition={{ ...transitionFast, delay: 0.14 }}
             className="text-base sm:text-lg text-[#9CA6B8] leading-relaxed max-w-3xl font-light"
           >
-            Développée et commercialisée par <strong className="text-[#F8FAFC] font-medium">RÉVA Consulting</strong>,
-            la plateforme <strong className="text-[#DFC489] font-medium">Élancé ERP</strong> centralise et optimise
-            l’ensemble de vos opérations commerciales, de stocks, d’achats et de chantiers au sein d’un écosystème logiciel
-            unifié, modulaire et hautement sécurisé.
+            <strong className="text-[#DFC489] font-medium">Élancé ERP</strong> est la solution logicielle principale
+            développée et commercialisée par <strong className="text-[#F8FAFC] font-medium">RÉVA Consulting</strong>,
+            conçue pour centraliser la gestion d&apos;entreprise et digitaliser l&apos;ensemble des processus opérationnels :
+            gestion commerciale, stocks, achats, ventes, chantiers, reporting et dématérialisation documentaire.
           </motion.p>
 
           {/* Actions Bar */}
@@ -236,9 +251,18 @@ export function ElanceErpSection({ locale = 'fr', className }: ElanceSectionProp
 
               <div className="h-4 w-[1px] bg-white/[0.08] hidden sm:block" />
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2.5">
+                <div className="relative size-5 shrink-0">
+                  <Image
+                    src="/images/logos/logo-elance.svg"
+                    alt="Élancé ERP"
+                    width={20}
+                    height={20}
+                    className="size-full object-contain"
+                  />
+                </div>
                 <span className="font-display font-bold text-sm tracking-tight text-[#F8FAFC]">
-                  Élancé <span className="text-[#C59B45]">ERP</span>
+                  Élancé <span className="text-[#3B82F6]">ERP</span>
                 </span>
                 <span className="hidden md:inline-block text-[10px] font-mono uppercase tracking-wider text-[#758195] px-2 py-0.5 rounded bg-[#0A0C11] border border-white/[0.06]">
                   Édité par RÉVA

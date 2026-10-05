@@ -63,31 +63,27 @@ export function Footer({ locale = 'fr', className }: FooterProps) {
           
           {/* Col 1: Brand, Tagline & Purpose (4 cols) */}
           <div className="lg:col-span-4 space-y-6">
-            {/* Logo Lockup with Official Asset and Gold Detailing */}
-            <Link
-              href={`/${locale}`}
-              className="inline-flex items-center gap-3.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45]"
-              aria-label={`${brandConfig.name} — Accueil`}
-            >
-              <div className="relative size-10 rounded-[8px] overflow-hidden border border-[#C59B45]/40 group-hover:border-[#C59B45] transition-colors shadow-[0_2px_12px_rgba(0,0,0,0.8)] shrink-0 bg-[#111318]">
-                <Image
-                  src="/images/logos/logo1.jpeg"
-                  alt={brandConfig.name}
-                  fill
-                  sizes="40px"
-                  className="object-cover"
-                />
+            {/* Primary Official Brand Logo */}
+            <div className="space-y-3">
+              <Link
+                href={`/${locale}`}
+                className="inline-flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45] rounded-[8px]"
+                aria-label={`${brandConfig.name} — Accueil`}
+              >
+                <div className="relative h-12 sm:h-14 w-auto aspect-[1599/1076] rounded-[8px] overflow-hidden border border-white/[0.08] group-hover:border-[#C59B45]/60 transition-colors shadow-[0_2px_14px_rgba(0,0,0,0.7)] shrink-0 bg-[#0E1118]">
+                  <Image
+                    src="/images/logos/logo-reva.jpeg"
+                    alt={brandConfig.name}
+                    width={1599}
+                    height={1076}
+                    className="h-full w-auto object-contain"
+                  />
+                </div>
+              </Link>
+              <div className="text-[11px] font-mono tracking-widest uppercase text-[#C59B45] font-medium">
+                {brandConfig.tagline}
               </div>
-              <div className="flex flex-col">
-                <span className="font-display text-lg font-bold tracking-tight text-[#F8FAFC]">
-                  R<span className="text-[#C59B45]">É</span>VA{' '}
-                  <span className="font-light text-[#CAD0DB]">Consulting</span>
-                </span>
-                <span className="text-[11px] font-mono tracking-widest uppercase text-[#C59B45] font-medium">
-                  {brandConfig.tagline}
-                </span>
-              </div>
-            </Link>
+            </div>
 
             <p className="text-xs sm:text-sm text-[#8E9AA8] leading-relaxed max-w-sm">
               Éditeur de solutions logicielles et cabinet d&apos;ingénierie du test informatique. Nous

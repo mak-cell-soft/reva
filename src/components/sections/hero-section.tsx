@@ -1,20 +1,15 @@
 // NOTE: Enterprise Homepage Hero Section for RÉVA Consulting.
-// Communicates sovereign software engineering, proprietary ERP publishing (Élancé), and IT testing rigor.
-// Features a custom technical schematic visual representing abstract software architecture and QA verification.
+// Features the official photographic glass RÉVA logo (/images/logos/logo-reva-verre.jpeg)
+// as an immersive, cinematic background with intelligent responsive positioning.
+// Communicates sovereign software engineering, proprietary ERP publishing (Élancé), and QA rigor.
 'use client';
 
 import * as React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import {
-  Code2,
-  CheckCircle2,
-  ShieldCheck,
-  ArrowRight,
-  Activity,
-  Sparkles,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 interface HeroSectionProps {
   /** Current locale segment */
@@ -25,40 +20,62 @@ interface HeroSectionProps {
 
 export function HeroSection({ locale = 'fr', className }: HeroSectionProps) {
   const shouldReduceMotion = useReducedMotion();
-
-  // Animation timing constants: elegant, fast, purposeful (no excessive motion)
   const transitionFast = { duration: 0.45, ease: [0.16, 1, 0.3, 1] };
 
   return (
     <section
       className={cn(
-        'relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden bg-[#08090C] py-16 lg:py-24',
+        'relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden bg-[#08090C] py-20 lg:py-28',
         className
       )}
       aria-label="Présentation générale"
     >
-      {/* 1. Controlled Ambient Geometry: Subdued technical grid + soft localized lighting */}
+      {/* 1. Large Atmospheric Background: Photographic Glass RÉVA Logo Asset */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
-        {/* Fine-line precision coordinate grid */}
-        <div
-          className="absolute inset-0 opacity-[0.035]"
-          style={{
-            backgroundImage: `linear-gradient(to right, #CAD0DB 1px, transparent 1px), linear-gradient(to bottom, #CAD0DB 1px, transparent 1px)`,
-            backgroundSize: '48px 48px',
-          }}
-        />
+        {/* Full-bleed responsive image container */}
+        <div className="relative w-full h-full">
+          <Image
+            src="/images/logos/logo-reva-verre.jpeg"
+            alt="RÉVA Consulting Physical Brand Emblem"
+            fill
+            sizes="100vw"
+            quality={92}
+            priority
+            className={cn(
+              'object-cover transition-all duration-700',
+              // Desktop: positioned toward the right so the glass logo shines in negative space
+              'lg:object-[86%_center] lg:opacity-80',
+              // Mobile & Tablet: centered with calibrated opacity for high readability
+              'object-[65%_35%] opacity-45 sm:opacity-55'
+            )}
+          />
 
-        {/* Very subtle blue accent light concentrated on right side architecture schematic */}
-        <div className="absolute -top-32 right-0 w-[550px] h-[550px] bg-[#1D68F2]/[0.07] rounded-full blur-[120px] pointer-events-none" />
+          {/* Sophisticated Dark Cinematic Overlays */}
+          {/* Desktop: gradient vignette from deep black on left (text side) to transparent on right (logo side) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#08090C] via-[#08090C]/85 via-45% to-transparent hidden lg:block" />
 
-        {/* Very subtle warm gold ambient glow under headline */}
-        <div className="absolute top-1/3 -left-32 w-[450px] h-[450px] bg-[#C59B45]/[0.04] rounded-full blur-[140px] pointer-events-none" />
+          {/* Mobile: balanced dark wash protecting editorial text while keeping glass logo perceptible */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#08090C]/85 via-[#08090C]/75 to-[#08090C]/90 lg:hidden" />
+
+          {/* Top edge fade for smooth navbar blend and bottom edge fade */}
+          <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#08090C] to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#08090C] to-transparent" />
+
+          {/* Subdued architectural coordinate grid */}
+          <div
+            className="absolute inset-0 opacity-[0.025]"
+            style={{
+              backgroundImage: `linear-gradient(to right, #CAD0DB 1px, transparent 1px), linear-gradient(to bottom, #CAD0DB 1px, transparent 1px)`,
+              backgroundSize: '48px 48px',
+            }}
+          />
+        </div>
       </div>
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 xl:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* LEFT COLUMN: Editorial & Value Proposition (Lg: 7 cols) */}
+          {/* LEFT COLUMN: Editorial & Strategic Value Proposition (Lg: 7 cols) */}
           <div className="lg:col-span-7 flex flex-col justify-center space-y-7 sm:space-y-8">
             
             {/* Eyebrow: Professional, technical, restrained */}
@@ -68,8 +85,7 @@ export function HeroSection({ locale = 'fr', className }: HeroSectionProps) {
               transition={{ ...transitionFast, delay: 0.05 }}
               className="inline-flex items-center gap-2.5 self-start"
             >
-              <div className="flex items-center gap-2 px-3 py-1 rounded-[6px] bg-[#111318] border border-white/[0.08] shadow-[0_1px_3px_rgba(0,0,0,0.5)]">
-                {/* Active pulse telemetry dot */}
+              <div className="flex items-center gap-2 px-3 py-1 rounded-[6px] bg-[#111318]/90 border border-white/[0.08] shadow-[0_1px_3px_rgba(0,0,0,0.5)] backdrop-blur-sm">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1D68F2] opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1D68F2]" />
@@ -125,13 +141,13 @@ export function HeroSection({ locale = 'fr', className }: HeroSectionProps) {
               {/* Secondary CTA */}
               <Link
                 href={`/${locale}#services`}
-                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 text-xs sm:text-sm font-medium tracking-wide text-[#CAD0DB] bg-[#111318] hover:bg-[#171A20] hover:text-[#F8FAFC] border border-white/[0.08] hover:border-white/[0.16] rounded-[10px] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090C] focus-visible:ring-slate-400 select-none cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 text-xs sm:text-sm font-medium tracking-wide text-[#CAD0DB] bg-[#111318]/90 hover:bg-[#171A20] hover:text-[#F8FAFC] border border-white/[0.08] hover:border-white/[0.16] rounded-[10px] transition-all duration-200 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090C] focus-visible:ring-slate-400 select-none cursor-pointer"
               >
                 <span>Découvrir nos expertises</span>
               </Link>
             </motion.div>
 
-            {/* Quick Proof Metrics Strip */}
+            {/* Strategic Proof Pillars Strip */}
             <motion.div
               initial={shouldReduceMotion ? {} : { opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -168,143 +184,16 @@ export function HeroSection({ locale = 'fr', className }: HeroSectionProps) {
 
           </div>
 
-          {/* RIGHT COLUMN: Sophisticated Technical Architecture Schematic (Lg: 5 cols) */}
-          <div className="lg:col-span-5 relative mt-6 lg:mt-0">
-            {/* Desktop & Tablet: Layered Architecture System Schematic */}
+          {/* RIGHT COLUMN: Clear visual space allowing the Glass RÉVA Logo to be prominently visible */}
+          <div className="lg:col-span-5 hidden lg:flex flex-col items-end justify-end h-full min-h-[420px] pointer-events-none select-none pr-4 pb-6">
             <motion.div
-              initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.96, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ ...transitionFast, delay: 0.2 }}
-              className="relative rounded-[20px] bg-[#111318]/90 border border-white/[0.08] shadow-[0_16px_50px_-10px_rgba(0,0,0,0.85)] p-5 sm:p-7 space-y-5 overflow-hidden backdrop-blur-md"
+              initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ ...transitionFast, delay: 0.35 }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#111318]/70 border border-white/[0.08] backdrop-blur-md text-[10.5px] font-mono text-[#8E9AA8] shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
             >
-              {/* Schematic Header Bar */}
-              <div className="flex items-center justify-between pb-4 border-b border-white/[0.06]">
-                <div className="flex items-center gap-2.5">
-                  <div className="flex items-center gap-1.5">
-                    <span className="size-2 rounded-full bg-[#1D68F2]" />
-                    <span className="size-2 rounded-full bg-[#C59B45]" />
-                    <span className="size-2 rounded-full bg-[#CAD0DB]/40" />
-                  </div>
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-[#758195] ml-1">
-                    SYSTEM_TOPOLOGY // V4.8
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#1D68F2]/10 border border-[#1D68F2]/25 text-[10px] font-mono text-[#60A5FA]">
-                  <Activity className="size-3 animate-pulse" />
-                  <span>SYNCHRONIZED</span>
-                </div>
-              </div>
-
-              {/* Node 1: Mission-Critical Enterprise Layer (Élancé ERP & Custom Software) */}
-              <div className="p-4 rounded-[12px] bg-[#171A20] border border-white/[0.06] hover:border-[#C59B45]/40 transition-colors group">
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-[8px] bg-[#C59B45]/10 border border-[#C59B45]/25 text-[#DFC489]">
-                      <Sparkles className="size-4 text-[#C59B45]" />
-                    </div>
-                    <div>
-                      <span className="text-[10px] font-mono uppercase tracking-wider text-[#C59B45] block">
-                        COEUR ÉDITEUR LOGICIEL
-                      </span>
-                      <h3 className="font-display font-bold text-sm text-[#F8FAFC]">
-                        Élancé ERP &amp; Logiciels Métiers
-                      </h3>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-mono text-[#758195] px-2 py-0.5 rounded bg-[#111318]">
-                    MODULAR
-                  </span>
-                </div>
-                <p className="text-xs text-[#8B95A5] mt-2.5 leading-relaxed font-light">
-                  Gestion financière, supply chain, RH et briques logicielles sur-mesure résilientes.
-                </p>
-              </div>
-
-              {/* Data Flow Bridge / Bus (Visual Connecting Wires) */}
-              <div className="relative py-1 flex items-center justify-between px-6">
-                <div className="h-6 w-[1px] bg-gradient-to-b from-[#C59B45]/50 to-[#1D68F2]/50 mx-auto" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="px-2.5 py-0.5 rounded-full bg-[#111318] border border-white/[0.08] text-[9px] font-mono text-[#758195]">
-                    API BUS &bull; HIGH THROUGHPUT
-                  </span>
-                </div>
-              </div>
-
-              {/* Node 2: Web, Mobile & Cloud Platforms Layer */}
-              <div className="p-4 rounded-[12px] bg-[#171A20] border border-white/[0.06] hover:border-white/[0.14] transition-colors">
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-[8px] bg-white/[0.05] border border-white/[0.08] text-[#CAD0DB]">
-                      <Code2 className="size-4" />
-                    </div>
-                    <div>
-                      <span className="text-[10px] font-mono uppercase tracking-wider text-[#CAD0DB] block">
-                        FRONTEND &amp; MICROSERVICES
-                      </span>
-                      <h3 className="font-display font-bold text-sm text-[#F8FAFC]">
-                        Applications Web &amp; Mobiles iOS / Android
-                      </h3>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-mono text-[#758195] px-2 py-0.5 rounded bg-[#111318]">
-                    CLOUD-NATIVE
-                  </span>
-                </div>
-                <p className="text-xs text-[#8B95A5] mt-2.5 leading-relaxed font-light">
-                  Expériences utilisateurs réactives, architectures découplées et interfaces métiers sécurisées.
-                </p>
-              </div>
-
-              {/* Data Flow Bridge (Blue laser accent) */}
-              <div className="relative py-1 flex items-center justify-between px-6">
-                <div className="h-6 w-[1px] bg-gradient-to-b from-white/[0.1] to-[#1D68F2] mx-auto" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="px-2.5 py-0.5 rounded-full bg-[#111318] border border-[#1D68F2]/30 text-[9px] font-mono text-[#60A5FA]">
-                    CONTINUOUS QA INSPECTION
-                  </span>
-                </div>
-              </div>
-
-              {/* Node 3: QA Testing & Automated Verification Laboratory */}
-              <div className="p-4 rounded-[12px] bg-[#171A20] border border-white/[0.06] hover:border-[#1D68F2]/50 transition-colors group">
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-[8px] bg-[#1D68F2]/10 border border-[#1D68F2]/25 text-[#60A5FA]">
-                      <ShieldCheck className="size-4 text-[#1D68F2]" />
-                    </div>
-                    <div>
-                      <span className="text-[10px] font-mono uppercase tracking-wider text-[#60A5FA] block">
-                        LABORATOIRE DU TEST &amp; ASSURANCE QUALITÉ
-                      </span>
-                      <h3 className="font-display font-bold text-sm text-[#F8FAFC]">
-                        Automation CI/CD &amp; Tests de Charge
-                      </h3>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-mono text-[#10B981] px-2 py-0.5 rounded bg-[#10B981]/10 border border-[#10B981]/20">
-                    PASSING
-                  </span>
-                </div>
-                
-                {/* Live Verification Telemetry */}
-                <div className="mt-3 pt-3 border-t border-white/[0.04] grid grid-cols-2 gap-2 text-[10.5px] font-mono text-[#758195]">
-                  <div className="flex items-center gap-1.5">
-                    <CheckCircle2 className="size-3 text-[#1D68F2]" />
-                    <span>Non-régression: 100%</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <CheckCircle2 className="size-3 text-[#1D68F2]" />
-                    <span>Temps de réponse: &lt; 20ms</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Footer status line */}
-              <div className="pt-2 flex items-center justify-between text-[10px] font-mono text-[#545F72]">
-                <span>ORCHESTRATION: RÉVA SOUVERAIN</span>
-                <span>ZONE: PROD // EU-WEST</span>
-              </div>
+              <span className="size-1.5 rounded-full bg-[#C59B45]" />
+              <span>EMBLÈME OFFICIEL // VERRE &amp; OR CHAMPAGNE</span>
             </motion.div>
           </div>
 

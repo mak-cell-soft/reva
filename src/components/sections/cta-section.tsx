@@ -75,56 +75,21 @@ export function CtaSection({ locale = 'fr', className }: CtaSectionProps) {
             'shadow-[0_24px_64px_rgba(0,0,0,0.7)]'
           )}
         >
-          {/* Subtle RÉVA Vector Mark Watermark in Background */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.035] sm:opacity-[0.045] transition-opacity">
-            <svg
-              className="w-[380px] sm:w-[560px] h-[380px] sm:h-[560px]"
-              viewBox="0 0 100 100"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              {/* Outer geometric shield */}
-              <polygon
-                points="50,5 92,26 92,74 50,95 8,74 8,26"
-                stroke="#C59B45"
-                strokeWidth="1.2"
-              />
-              {/* Internal diagonal architectural laser lines */}
-              <line x1="20" y1="35" x2="80" y2="65" stroke="#1D68F2" strokeWidth="1.2" />
-              <line x1="50" y1="5" x2="50" y2="95" stroke="#CAD0DB" strokeWidth="0.8" />
-              {/* Distinctive stylized R contour */}
-              <path
-                d="M32 28 H58 C68 28 72 34 72 42 C72 50 66 55 56 55 H42 V72"
-                stroke="#C59B45"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M52 55 L74 72"
-                stroke="#C59B45"
-                strokeWidth="3"
-                strokeLinecap="round"
-              />
-            </svg>
-          </div>
-
           {/* Foreground Content Stack */}
           <div className="relative z-10 max-w-4xl mx-auto space-y-8 sm:space-y-10">
-            {/* Professional Brand Eyebrow with Official Studio Emblem */}
-            <div className="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full bg-[#12151D] border border-white/[0.08] shadow-inner">
-              <div className="relative size-5 rounded-full overflow-hidden border border-[#C59B45]/40 shrink-0">
+            {/* Professional Brand Eyebrow with Official Brand Mark */}
+            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-[#12151D] border border-white/[0.08] shadow-inner">
+              <div className="relative h-5 w-auto aspect-[1599/1076] overflow-hidden rounded-[4px] shrink-0">
                 <Image
-                  src="/images/logos/logo1.jpeg"
+                  src="/images/logos/logo-reva.jpeg"
                   alt={brandConfig.name}
-                  fill
-                  sizes="20px"
-                  className="object-cover"
+                  width={1599}
+                  height={1076}
+                  className="h-full w-auto object-contain"
                 />
               </div>
               <span className="text-[11px] font-mono uppercase tracking-[0.16em] text-[#C59B45] font-medium">
-                ENGAGEMENT & PARTENARIAT // RÉVA CONSULTING
+                ENGAGEMENT &amp; PARTENARIAT // RÉVA CONSULTING
               </span>
             </div>
 

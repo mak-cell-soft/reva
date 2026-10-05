@@ -109,19 +109,19 @@ export function Navbar({ locale = 'fr' }: NavbarProps) {
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Left: Official RÉVA Logo Asset (strictly using official image) */}
+          {/* Left: Official Primary RÉVA Logo Asset */}
           <Link
             href={`/${locale}`}
-            className="flex items-center gap-2 group rounded-[6px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45]/80"
+            className="flex items-center group rounded-[8px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45]/80"
             aria-label={`${brandConfig.name} — Accueil`}
           >
-            <div className="relative h-9 sm:h-10 w-auto aspect-[1439/1600] rounded-[6px] overflow-hidden border border-[#C59B45]/30 group-hover:border-[#C59B45]/70 transition-colors shadow-[0_2px_10px_rgba(0,0,0,0.6)] shrink-0 bg-[#111318]">
+            <div className="relative h-9 sm:h-10 w-auto aspect-[1599/1076] rounded-[6px] overflow-hidden border border-white/[0.08] group-hover:border-[#C59B45]/60 transition-colors shadow-[0_2px_10px_rgba(0,0,0,0.6)] shrink-0 bg-[#0E1118]">
               <Image
-                src="/images/logos/logo1.jpeg"
+                src="/images/logos/logo-reva.jpeg"
                 alt={brandConfig.name}
-                fill
-                sizes="(max-width: 640px) 36px, 40px"
-                className="object-cover"
+                width={1599}
+                height={1076}
+                className="h-full w-auto object-contain"
                 priority
               />
             </div>

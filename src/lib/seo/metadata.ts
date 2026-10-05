@@ -100,9 +100,9 @@ export function buildLocalizedMetadata(locale: string): Metadata {
       type: 'website',
       images: [
         {
-          url: `${baseUrl}/images/logos/logo1.jpeg`,
-          width: 1200,
-          height: 630,
+          url: `${baseUrl}/images/logos/logo-reva.jpeg`,
+          width: 1599,
+          height: 1076,
           alt: `${brandConfig.name} — Développer. Tester. Optimiser.`,
         },
       ],
@@ -111,7 +111,7 @@ export function buildLocalizedMetadata(locale: string): Metadata {
       card: 'summary_large_image',
       title: titleDefault,
       description,
-      images: [`${baseUrl}/images/logos/logo1.jpeg`],
+      images: [`${baseUrl}/images/logos/logo-reva.jpeg`],
     },
     robots: {
       index: true,
@@ -144,7 +144,7 @@ export function getOrganizationStructuredData() {
     url: baseUrl,
     logo: {
       '@type': 'ImageObject',
-      url: `${baseUrl}/images/logos/logo1.jpeg`,
+      url: `${baseUrl}/images/logos/logo-reva.jpeg`,
       caption: brandConfig.name,
     },
     slogan: brandConfig.tagline,
@@ -221,6 +221,7 @@ export function getElanceErpStructuredData() {
     name: 'Élancé ERP',
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Cloud, Web, On-Premise',
+    image: `${baseUrl}/images/logos/logo-elance.svg`,
     description:
       'Élancé ERP est une solution de gestion d’entreprise développée et commercialisée par RÉVA Consulting, conçue pour centraliser et optimiser la gestion commerciale, les stocks, les achats, les ventes et les chantiers.',
     publisher: {
