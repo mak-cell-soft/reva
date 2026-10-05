@@ -1,0 +1,174 @@
+/* Import Tailwind v4 */
+@import "tailwindcss";
+
+@theme {
+  /* Dominant Black & Charcoal Foundation */
+  --color-reva-black: #08090C;
+  --color-reva-charcoal: #111318;
+  --color-reva-surface: #171A20;
+  --color-reva-surface-hover: #1F232B;
+  --color-reva-surface-elevated: #252934;
+
+  /* Champagne Gold: Expertise, Premium Quality & Leadership */
+  --color-gold-50: #FBF9F2;
+  --color-gold-100: #F6F0DB;
+  --color-gold-200: #ECDDB5;
+  --color-gold-300: #DFC489;
+  --color-gold-400: #D4B066;
+  --color-gold-500: #C59B45;
+  --color-gold-600: #AA8132;
+  --color-gold-700: #876123;
+  --color-gold-800: #66471B;
+  --color-gold-900: #422D11;
+
+  /* Metallic Silver: Precision, Engineering & Reliability */
+  --color-silver-100: #F8FAFC;
+  --color-silver-200: #E2E6ED;
+  --color-silver-300: #CAD0DB;
+  --color-silver-400: #9CA6B8;
+  --color-silver-500: #758195;
+  --color-silver-600: #545F72;
+  --color-silver-700: #384152;
+  --color-silver-800: #232935;
+  --color-silver-900: #151821;
+
+  /* Electric Blue: Technology, Innovation & Digital Systems */
+  --color-blue-300: #60A5FA;
+  --color-blue-400: #3B82F6;
+  --color-blue-500: #1D68F2;
+  --color-blue-600: #1552C6;
+  --color-blue-700: #0E3E9B;
+
+  /* Typography tokens */
+  --font-display: var(--font-display), 'Plus Jakarta Sans', sans-serif;
+  --font-body: var(--font-body), 'Outfit', sans-serif;
+  --font-mono: var(--font-mono), 'JetBrains Mono', monospace;
+
+  /* Radius tokens */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+}
+
+:root {
+  /* Surface Tokens */
+  --bg-base: #08090C;
+  --bg-charcoal: #111318;
+  --bg-surface: #171A20;
+  --bg-surface-hover: #1F232B;
+  --bg-elevated: #252934;
+
+  /* Semantic Typography Tokens */
+  --text-primary: #F8FAFC;
+  --text-secondary: #CAD0DB;
+  --text-muted: #758195;
+  --text-gold: #C59B45;
+  --text-blue: #3B82F6;
+
+  /* Semantic Border Tokens */
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-surface: #232935;
+  --border-gold-subtle: rgba(197, 155, 69, 0.28);
+  --border-blue-subtle: rgba(29, 104, 242, 0.35);
+
+  /* Semantic Glow/Shadow Tokens (Restrained, non-excessive) */
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.75);
+  --shadow-gold-subtle: 0 0 24px -6px rgba(197, 155, 69, 0.15);
+  --shadow-blue-subtle: 0 0 24px -6px rgba(29, 104, 242, 0.18);
+}
+
+/* Base Body Styles */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-base);
+  color: var(--text-secondary);
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-secondary);
+  font-family: var(--font-body), 'Outfit', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Headings use Display Font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+/* Monospace elements */
+code, pre, kbd, samp {
+  font-family: var(--font-mono), 'JetBrains Mono', monospace;
+}
+
+/* Subtle, refined container borders & card styles */
+.reva-card {
+  background-color: var(--bg-charcoal);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: border-color 250ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 250ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reva-card:hover {
+  background-color: var(--bg-surface);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.reva-card-gold-hover:hover {
+  border-color: var(--border-gold-subtle);
+  box-shadow: var(--shadow-gold-subtle);
+}
+
+.reva-card-blue-hover:hover {
+  border-color: var(--border-blue-subtle);
+  box-shadow: var(--shadow-blue-subtle);
+}
+
+/* Restrained Gold Accent Line */
+.gold-accent-line {
+  height: 2px;
+  background: linear-gradient(90deg, #C59B45 0%, rgba(197, 155, 69, 0) 100%);
+}
+
+/* Restrained Blue Accent Line */
+.blue-accent-line {
+  height: 2px;
+  background: linear-gradient(90deg, #1D68F2 0%, rgba(29, 104, 242, 0) 100%);
+}
+
+/* Nav Link Underline animation */
+.reva-nav-link {
+  position: relative;
+  transition: color 200ms ease;
+}
+
+.reva-nav-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1.5px;
+  bottom: -4px;
+  left: 0;
+  background-color: #C59B45;
+  transform-origin: bottom center;
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reva-nav-link:hover::after {
+  transform: scaleX(1);
+}
