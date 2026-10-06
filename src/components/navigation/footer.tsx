@@ -21,25 +21,21 @@ export function Footer({ locale = 'fr', className }: FooterProps) {
 
   // Navigation Links strictly conforming to specification
   const navLinks = [
-    { label: 'Accueil', href: `/${locale}` },
-    { label: 'Services', href: `/${locale}#services` },
+    { label: 'Le Cabinet', href: `/${locale}#a-propos` },
+    { label: 'Expertises', href: `/${locale}#services` },
     { label: 'Élancé ERP', href: `/${locale}#elance-erp`, isSpecial: true },
-    { label: 'Expertise', href: `/${locale}#expertise` },
+    { label: 'Méthode', href: `/${locale}#methodologie` },
     { label: 'Réalisations', href: `/${locale}#realisations` },
-    { label: 'À propos', href: `/${locale}#a-propos` },
     { label: 'Contact', href: `/${locale}#contact` },
   ];
 
-  // 8 Service Categories requested by specification
+  // Core Service Pillars
   const serviceLinks = [
-    { label: 'Logiciels & ERP', href: `/${locale}#services` },
-    { label: 'Web', href: `/${locale}#services` },
-    { label: 'Mobile', href: `/${locale}#services` },
-    { label: 'QA & Tests', href: `/${locale}#services` },
-    { label: 'Automatisation', href: `/${locale}#services` },
-    { label: 'Intégration', href: `/${locale}#services` },
-    { label: 'Maintenance', href: `/${locale}#services` },
-    { label: 'Digitalisation', href: `/${locale}#services` },
+    { label: 'Logiciels Métier & Progiciels', href: `/${locale}#services` },
+    { label: 'Élancé ERP', href: `/${locale}#elance-erp` },
+    { label: 'Assurance Qualité & QA', href: `/${locale}#expertise` },
+    { label: 'Automatisation des Tests', href: `/${locale}#expertise` },
+    { label: 'Intégration & TMA', href: `/${locale}#services` },
   ];
 
   return (
@@ -88,12 +84,6 @@ export function Footer({ locale = 'fr', className }: FooterProps) {
               accompagnons les organisations dans la conception, la fiabilisation et le pilotage de leurs
               systèmes critiques.
             </p>
-
-            {/* Subtle System Status Pill */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0E1118] border border-white/[0.06] text-[11px] font-mono text-[#758195]">
-              <span className="size-1.5 rounded-full bg-[#1D68F2]" />
-              <span>Plateformes & Services Opérationnels</span>
-            </div>
           </div>
 
           {/* Col 2: Navigation Links (2 cols) */}

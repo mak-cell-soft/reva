@@ -89,7 +89,7 @@ export function HeroSection({ locale = 'fr', className }: HeroSectionProps) {
               </span>
             </motion.div>
 
-            {/* Primary Headline: Bold, commanding, split for readability */}
+            {/* Primary Headline: Calm, authoritative, consulting-grade */}
             <motion.div
               initial={shouldReduceMotion ? {} : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -97,22 +97,18 @@ export function HeroSection({ locale = 'fr', className }: HeroSectionProps) {
               className="space-y-2"
             >
               <h1 className="font-display text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-[#F8FAFC] leading-[1.12]">
-                Nous développons les solutions{' '}
-                <span className="block mt-1 sm:mt-2 text-transparent bg-clip-text bg-gradient-to-r from-[#F8FAFC] via-[#E2E6ED] to-[#C59B45]">
-                  qui font avancer votre entreprise.
-                </span>
+                Ingénierie logicielle &amp; qualification des systèmes critiques.
               </h1>
             </motion.div>
 
-            {/* Supporting Text */}
+            {/* Supporting Text: Calm, precise, professional */}
             <motion.p
               initial={shouldReduceMotion ? {} : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ...transitionFast, delay: 0.18 }}
               className="text-base sm:text-lg text-[#9CA6B8] leading-relaxed max-w-2xl font-light"
             >
-              Logiciels métier, ERP, applications web et mobiles, tests logiciels et automatisation :{' '}
-              <strong className="text-[#CAD0DB] font-medium">RÉVA</strong> accompagne votre transformation digitale de l&apos;idée au déploiement.
+              Société de développement logiciel et éditeur d&apos;Élancé ERP. RÉVA accompagne les entreprises exigeantes dans la conception d&apos;applications sur-mesure et l&apos;assurance qualité de leurs plateformes opérationnelles.
             </motion.p>
 
             {/* CTAs: Primary & Secondary */}
@@ -127,7 +123,7 @@ export function HeroSection({ locale = 'fr', className }: HeroSectionProps) {
                 href={`/${locale}#contact`}
                 className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#08090C] bg-[#C59B45] hover:bg-[#D4B066] active:bg-[#AA8132] rounded-[10px] transition-all duration-200 shadow-[0_2px_14px_rgba(197,155,69,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090C] focus-visible:ring-[#C59B45] select-none cursor-pointer"
               >
-                <span>Parlons de votre projet</span>
+                <span>Échanger sur votre projet</span>
                 <ArrowRight className="size-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" />
               </Link>
 
@@ -136,43 +132,8 @@ export function HeroSection({ locale = 'fr', className }: HeroSectionProps) {
                 href={`/${locale}#services`}
                 className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 text-xs sm:text-sm font-medium tracking-wide text-[#CAD0DB] bg-[#111318]/90 hover:bg-[#171A20] hover:text-[#F8FAFC] border border-white/[0.08] hover:border-white/[0.16] rounded-[10px] transition-all duration-200 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090C] focus-visible:ring-slate-400 select-none cursor-pointer"
               >
-                <span>Découvrir nos expertises</span>
+                <span>Découvrir nos activités</span>
               </Link>
-            </motion.div>
-
-            {/* Strategic Proof Pillars Strip */}
-            <motion.div
-              initial={shouldReduceMotion ? {} : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ ...transitionFast, delay: 0.32 }}
-              className="pt-6 sm:pt-8 border-t border-white/[0.06] grid grid-cols-3 gap-4 sm:gap-8 max-w-xl"
-            >
-              <div>
-                <div className="font-display font-bold text-xl sm:text-2xl text-[#F8FAFC]">
-                  Éditeur ERP
-                </div>
-                <div className="text-[11px] sm:text-xs text-[#758195] font-light mt-0.5">
-                  Solution Élancé propriétaire
-                </div>
-              </div>
-
-              <div>
-                <div className="font-display font-bold text-xl sm:text-2xl text-[#F8FAFC]">
-                  Ingénierie QA
-                </div>
-                <div className="text-[11px] sm:text-xs text-[#758195] font-light mt-0.5">
-                  Qualification continue
-                </div>
-              </div>
-
-              <div>
-                <div className="font-display font-bold text-xl sm:text-2xl text-[#F8FAFC]">
-                  Sur-Mesure
-                </div>
-                <div className="text-[11px] sm:text-xs text-[#758195] font-light mt-0.5">
-                  Architectures pérennes
-                </div>
-              </div>
             </motion.div>
 
           </div>

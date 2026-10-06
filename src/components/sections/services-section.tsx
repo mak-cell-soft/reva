@@ -1,11 +1,13 @@
-// NOTE: Main Services Section for RÉVA Consulting.
-// Clean editorial presentation of the 8 technical disciplines.
-// Minimal, confident, and premium — strictly avoiding badge clutter and decorative tags.
+// NOTE: Main Services & Engineering Disciplines Section for RÉVA Consulting.
+// Consolidates technical expertise into 3 authoritative engineering pillars.
+// Spacious, confident typography with zero icon clutter and generous whitespace.
 'use client';
 
 import * as React from 'react';
+import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { ArrowRight } from 'lucide-react';
 
 interface ServicesSectionProps {
   /** Optional active locale segment */
@@ -14,73 +16,53 @@ interface ServicesSectionProps {
   className?: string;
 }
 
-interface ServiceData {
-  readonly id: string;
+interface PillarData {
   readonly number: string;
   readonly title: string;
-  readonly description: string;
+  readonly summary: string;
+  readonly scope: readonly string[];
 }
 
-export function ServicesSection({ className }: ServicesSectionProps) {
+export function ServicesSection({ locale = 'fr', className }: ServicesSectionProps) {
   const shouldReduceMotion = useReducedMotion();
 
-  // The 8 official services of RÉVA Consulting
-  const services: readonly ServiceData[] = [
+  // 3 consolidated, authoritative engineering pillars
+  const pillars: readonly PillarData[] = [
     {
-      id: 'custom-erp',
       number: '01',
-      title: 'Logiciels métier & ERP',
-      description:
-        'Conception de plateformes d’entreprise sur-mesure et déploiement de la suite Élancé ERP pour unifier et piloter l’ensemble des opérations.',
+      title: 'Logiciels Métier & Architectures Sur-Mesure',
+      summary:
+        'Conception et développement de solutions d’entreprise adaptées à vos spécificités opérationnelles : plateformes web complexes, applications mobiles de terrain et intégration de l’ERP souverain Élancé.',
+      scope: [
+        'Logiciels d’entreprise et portails métier',
+        'Applications web & mobiles résilientes',
+        'Déploiement et personnalisation d’Élancé ERP',
+        'Digitalisation et automatisation des flux opérationnels',
+      ],
     },
     {
-      id: 'web-apps',
       number: '02',
-      title: 'Applications Web',
-      description:
-        'Applications modernes, performantes et évolutives, conçues pour supporter des logiques métier complexes avec une fluidité optimale.',
+      title: 'Assurance Qualité & Ingénierie du Test',
+      summary:
+        'Discipline d’ingénierie dédiée à la fiabilité logicielle : qualification continue, validation de conformité fonctionnelle et mise en place de frameworks d’automatisation des tests.',
+      scope: [
+        'Plans de test fonctionnels et techniques',
+        'Automatisation des tests E2E et validation d’API',
+        'Contrôle systématique de non-régression (CI/CD)',
+        'Audits de robustesse et tests de performance',
+      ],
     },
     {
-      id: 'mobile-apps',
       number: '03',
-      title: 'Applications mobiles',
-      description:
-        'Expériences mobiles natives et multiplateformes pensées pour les usages réels, alliant ergonomie de pointe et résilience hors-ligne.',
-    },
-    {
-      id: 'qa-testing',
-      number: '04',
-      title: 'QA & Tests',
-      description:
-        'Validation fonctionnelle, technique et performance. Qualification rigoureuse garantissant la fiabilité et la conformité de vos systèmes.',
-    },
-    {
-      id: 'test-automation',
-      number: '05',
-      title: 'Automatisation des tests',
-      description:
-        'Mise en place de frameworks d’automatisation et pipelines CI/CD pour éliminer les régressions et accélérer les cycles de livraison.',
-    },
-    {
-      id: 'systems-integration',
-      number: '06',
-      title: 'Intégration de systèmes',
-      description:
-        'Interopérabilité fluide de vos outils hérités, progiciels de gestion et architectures modernes via des API et connecteurs sécurisés.',
-    },
-    {
-      id: 'maintenance-evolution',
-      number: '07',
-      title: 'Maintenance & évolution',
-      description:
-        'Tierce Maintenance Applicative (TMA) préventive, corrective et évolutive pour garantir la pérennité et la sécurité de vos actifs numériques.',
-    },
-    {
-      id: 'process-digitalization',
-      number: '08',
-      title: 'Digitalisation des processus',
-      description:
-        'Analyse des workflows d’entreprise, élimination des tâches redondantes et automatisation fluide des flux opérationnels.',
+      title: 'Intégration de Systèmes & Évolution Continue (TMA)',
+      summary:
+        'Garantie de continuité et interopérabilité de votre écosystème : interconnexion d’outils historiques, maintenance applicative préventive et accompagnement technique dans la durée.',
+      scope: [
+        'Interopérabilité de progiciels et flux de données sécurisés',
+        'Tierce Maintenance Applicative (TMA) préventive et corrective',
+        'Modernisation progressive des systèmes hérités',
+        'Support technique dédié et gouvernance logicielle',
+      ],
     },
   ];
 
@@ -95,23 +77,10 @@ export function ServicesSection({ className }: ServicesSectionProps) {
         className
       )}
     >
-      {/* Precision Ambient Grid Background */}
-      <div className="absolute inset-0 pointer-events-none select-none">
-        <div
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: `linear-gradient(to right, #CAD0DB 1px, transparent 1px), linear-gradient(to bottom, #CAD0DB 1px, transparent 1px)`,
-            backgroundSize: '64px 64px',
-          }}
-        />
-        <div className="absolute top-12 left-1/4 w-[600px] h-[600px] bg-[#C59B45]/[0.025] rounded-full blur-[160px]" />
-        <div className="absolute bottom-12 right-1/4 w-[600px] h-[600px] bg-[#1D68F2]/[0.025] rounded-full blur-[160px]" />
-      </div>
-
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         
         {/* SECTION HEADER: Spacious & Editorial */}
-        <div className="max-w-4xl space-y-4 sm:space-y-5 mb-16 sm:mb-20 lg:mb-24">
+        <div className="max-w-3xl space-y-4 sm:space-y-5 mb-16 sm:mb-20 lg:mb-24">
           <motion.div
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -130,7 +99,7 @@ export function ServicesSection({ className }: ServicesSectionProps) {
             transition={{ ...transitionFast, delay: 0.08 }}
             className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#F8FAFC]"
           >
-            Nos expertises
+            Nos domaines d&apos;intervention
           </motion.h2>
 
           <motion.p
@@ -138,38 +107,63 @@ export function ServicesSection({ className }: ServicesSectionProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ ...transitionFast, delay: 0.14 }}
-            className="text-lg sm:text-xl text-[#9CA6B8] font-light leading-relaxed max-w-3xl"
+            className="text-lg sm:text-xl text-[#9CA6B8] font-light leading-relaxed"
           >
-            Une expertise technologique au service de la performance des entreprises.
+            Une ingénierie rigoureuse pour concevoir, éprouver et pérenniser les systèmes informatiques de l&apos;entreprise.
           </motion.p>
         </div>
 
-        {/* EDITORIAL SERVICES DOSSIER: Clean, Spacious, Minimal */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {services.map((service, index) => (
+        {/* 3 CONSOLIDATED PILLARS: Airy, Structured, Editorial */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
+          {pillars.map((pillar, index) => (
             <motion.article
-              key={service.id}
+              key={pillar.number}
               initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
-              transition={{ ...transitionFast, delay: 0.06 + (index % 4) * 0.06 }}
-              className="group relative rounded-[18px] bg-[#0E1015] p-7 sm:p-9 lg:p-10 border border-white/[0.06] hover:border-white/[0.14] hover:bg-[#11141B] transition-all duration-300 flex flex-col justify-between"
+              transition={{ ...transitionFast, delay: 0.1 + index * 0.1 }}
+              className="flex flex-col justify-between p-8 sm:p-10 rounded-[18px] bg-[#0D0F14] border border-white/[0.06] hover:border-white/[0.14] transition-all duration-300"
             >
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {/* Index Number */}
-                <span className="font-mono text-xs font-semibold text-[#C59B45] tracking-wider block">
-                  {service.number}
+                <span className="font-mono text-xs font-semibold text-[#DFC489] tracking-wider block">
+                  {pillar.number}
                 </span>
 
-                {/* Service Title */}
-                <h3 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-[#F8FAFC] group-hover:text-white transition-colors">
-                  {service.title}
+                {/* Title */}
+                <h3 className="font-display text-2xl font-bold tracking-tight text-[#F8FAFC] leading-snug">
+                  {pillar.title}
                 </h3>
 
-                {/* Description */}
+                {/* Summary */}
                 <p className="text-sm sm:text-base text-[#9CA6B8] leading-relaxed font-light">
-                  {service.description}
+                  {pillar.summary}
                 </p>
+
+                {/* Scope list */}
+                <div className="pt-4 border-t border-white/[0.06] space-y-2.5">
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-[#758195] block">
+                    Périmètre d&apos;intervention
+                  </span>
+                  <ul className="space-y-2 text-xs sm:text-sm text-[#CAD0DB] font-light">
+                    {pillar.scope.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="text-[#DFC489] mt-0.5 select-none">&bull;</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="pt-8">
+                <Link
+                  href={`/${locale}#contact`}
+                  className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-[#DFC489] hover:text-[#F6F0DB] transition-colors"
+                >
+                  <span>Nous consulter</span>
+                  <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+                </Link>
               </div>
             </motion.article>
           ))}

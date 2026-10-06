@@ -35,9 +35,9 @@ export function RealisationsSection({ className }: RealisationsSectionProps) {
     {
       id: 'socofeb-decor',
       name: 'SOCOFEB DÉCOR',
-      category: 'Website / Digital Experience',
+      category: 'Plateforme Web & Catalogue Digital Métier',
       description:
-        'Conception et développement de la plateforme web de SOCOFEB Décor, valorisant l’ensemble des collections de panneaux décoratifs, bois et matériaux d’agencement intérieur à travers un catalogue digital fluide et immersif.',
+        'Conception et développement de la plateforme web de SOCOFEB Décor, valorisant l’ensemble des collections de panneaux décoratifs et matériaux d’agencement intérieur à travers un catalogue digital fluide et immersif.',
       image: '/images/realisations/socofeb-decor.jpg',
       url: 'https://socofeb-decor.com/',
       accent: 'gold',
@@ -45,9 +45,9 @@ export function RealisationsSection({ className }: RealisationsSectionProps) {
     {
       id: 'luxaven',
       name: 'LUXAVEN',
-      category: 'Digital Experience / Web',
+      category: 'Plateforme Numérique & Vitrine Architecturale',
       description:
-        'Développement d’une vitrine numérique d’exception pour le studio LUXAVEN, mettant en scène des objets d’art sculpturaux, des pièces de mobilier architectural et des collections rares dans un écrin digital minimaliste et raffiné.',
+        'Développement d’une vitrine numérique d’exception pour le studio LUXAVEN, mettant en scène des objets d’art et pièces de mobilier architectural dans un écrin digital minimaliste et raffiné.',
       image: '/images/realisations/luxaven.jpg',
       url: 'https://luxaven.art/',
       accent: 'silver',

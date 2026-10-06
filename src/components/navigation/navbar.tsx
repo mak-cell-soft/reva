@@ -30,15 +30,14 @@ export function Navbar({ locale = 'fr' }: NavbarProps) {
   const toggleButtonRef = React.useRef<HTMLButtonElement>(null);
   const shouldReduceMotion = useReducedMotion();
 
-  // Navigation Items required by RÉVA Consulting specification
+  // Streamlined navigation destinations for a professional consulting firm
   const navItems: readonly NavItem[] = React.useMemo(
     () => [
-      { label: 'Accueil', href: `/${locale}` },
-      { label: 'Services', href: `/${locale}#services` },
+      { label: 'Le Cabinet', href: `/${locale}#a-propos` },
+      { label: 'Expertises', href: `/${locale}#services` },
       { label: 'Élancé ERP', href: `/${locale}#elance-erp`, isSpecial: true },
-      { label: 'Expertise', href: `/${locale}#expertise` },
+      { label: 'Méthode', href: `/${locale}#methodologie` },
       { label: 'Réalisations', href: `/${locale}#realisations` },
-      { label: 'À propos', href: `/${locale}#a-propos` },
       { label: 'Contact', href: `/${locale}#contact` },
     ],
     [locale]
@@ -282,11 +281,6 @@ export function Navbar({ locale = 'fr' }: NavbarProps) {
                         aria-current={isCurrent ? 'page' : undefined}
                       >
                         <span>{item.label}</span>
-                        {item.isSpecial && (
-                          <span className="text-[10px] font-mono uppercase tracking-wider text-[#C59B45] px-1.5 py-0.5 rounded bg-[#C59B45]/10 border border-[#C59B45]/20">
-                            ERP
-                          </span>
-                        )}
                       </Link>
                     );
                   })}

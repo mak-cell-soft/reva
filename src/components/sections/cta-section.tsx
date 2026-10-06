@@ -1,16 +1,14 @@
 // NOTE: Final Signature CTA Section for RÉVA Consulting.
-// Features large, commanding typography, subtle champagne gold light, very subtle electric blue accent,
-// and the RÉVA logo mark as an architectural background watermark.
-// Communicates partnership, engineering rigor, and sober corporate authority.
+// Quiet, confident, mature consulting invitation.
+// Eliminates artificial badge boxes, fake guarantee pills, and decorative icons.
 'use client';
 
 import * as React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { brandConfig } from '@/lib/brand.config';
-import { ArrowRight, Mail, ShieldCheck, Clock, Terminal } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 interface CtaSectionProps {
   /** Optional active locale segment */
@@ -19,7 +17,7 @@ interface CtaSectionProps {
   className?: string;
 }
 
-export function CtaSection({ locale = 'fr', className }: CtaSectionProps) {
+export function CtaSection({ className }: CtaSectionProps) {
   const shouldReduceMotion = useReducedMotion();
   const transitionSmooth = { duration: 0.5, ease: [0.16, 1, 0.3, 1] };
 
@@ -28,176 +26,68 @@ export function CtaSection({ locale = 'fr', className }: CtaSectionProps) {
       id="contact"
       aria-label="Contact et engagement projet RÉVA Consulting"
       className={cn(
-        'relative bg-[#08090C] py-24 sm:py-32 lg:py-44 border-t border-white/[0.06] overflow-hidden',
+        'relative bg-[#08090C] py-24 sm:py-32 lg:py-40 border-t border-white/[0.06] overflow-hidden',
         className
       )}
     >
-      {/* 1. Precision Ambient Lights: Champagne Gold & Subtle Electric Blue */}
-      <div className="absolute inset-0 pointer-events-none select-none">
-        {/* Soft Champagne Gold Core Glow */}
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[900px] h-[500px] rounded-full blur-[170px]"
-          style={{
-            background:
-              'radial-gradient(circle, rgba(197, 155, 69, 0.08) 0%, rgba(197, 155, 69, 0.02) 45%, transparent 70%)',
-          }}
-        />
-
-        {/* Very Subtle Electric Blue Peripheral Accent */}
-        <div
-          className="absolute bottom-10 right-1/4 w-[500px] h-[350px] rounded-full blur-[180px]"
-          style={{
-            background:
-              'radial-gradient(circle, rgba(29, 104, 242, 0.04) 0%, transparent 70%)',
-          }}
-        />
-
-        {/* Precision Coordinate Blueprint Grid */}
-        <div
-          className="absolute inset-0 opacity-[0.025]"
-          style={{
-            backgroundImage: `linear-gradient(to right, #CAD0DB 1px, transparent 1px), linear-gradient(to bottom, #CAD0DB 1px, transparent 1px)`,
-            backgroundSize: '72px 72px',
-          }}
-        />
-      </div>
-
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-        {/* Architectural Card Container: The Final Website Signature */}
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
         <motion.div
-          initial={shouldReduceMotion ? {} : { opacity: 0, y: 28 }}
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, margin: '-40px' }}
           transition={transitionSmooth}
-          className={cn(
-            'relative rounded-[28px] sm:rounded-[36px] bg-[#0A0C11] border border-white/[0.08]',
-            'p-8 sm:p-12 lg:p-20 text-center overflow-hidden',
-            'shadow-[0_24px_64px_rgba(0,0,0,0.7)]'
-          )}
+          className="p-8 sm:p-14 lg:p-16 rounded-[24px] bg-[#0D0F14] border border-white/[0.08] text-center space-y-8"
         >
-          {/* Foreground Content Stack */}
-          <div className="relative z-10 max-w-4xl mx-auto space-y-8 sm:space-y-10">
-            {/* Clean brand lockup */}
-            <div className="inline-flex items-center gap-3">
-              <div className="relative h-6 w-auto aspect-[1599/1076] overflow-hidden rounded-[4px] shrink-0">
-                <Image
-                  src="/images/logos/logo-reva.jpeg"
-                  alt={brandConfig.name}
-                  width={1599}
-                  height={1076}
-                  className="h-full w-auto object-contain"
-                />
-              </div>
-              <span className="text-xs font-mono font-semibold tracking-[0.2em] uppercase text-[#DFC489]">
-                RÉVA CONSULTING
-              </span>
+          {/* Brand identifier */}
+          <div className="inline-flex items-center gap-3">
+            <div className="relative h-6 w-auto aspect-[1599/1076] overflow-hidden rounded-[4px] shrink-0">
+              <Image
+                src="/images/logos/logo-reva.jpeg"
+                alt={brandConfig.name}
+                width={1599}
+                height={1076}
+                className="h-full w-auto object-contain"
+              />
             </div>
+            <span className="text-xs font-mono font-semibold tracking-[0.2em] uppercase text-[#DFC489]">
+              RÉVA CONSULTING
+            </span>
+          </div>
 
-            {/* Primary Headline: Large typography */}
-            <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#F8FAFC] leading-[1.12]">
-              Un projet logiciel ?{' '}
-              <span className="text-[#C59B45]">Construisons-le ensemble.</span>
+          {/* Heading */}
+          <div className="space-y-4 max-w-2xl mx-auto">
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#F8FAFC] leading-[1.15]">
+              Un projet logiciel à concevoir ou à fiabiliser ?
             </h2>
-
-            {/* Supporting Text: Respectful, partner-oriented */}
-            <p className="font-sans text-base sm:text-lg lg:text-xl text-[#9CA6B8] max-w-2xl mx-auto leading-relaxed">
-              Parlez-nous de votre besoin. Nous vous aiderons à définir une solution adaptée à vos
-              objectifs, votre organisation et votre évolution.
+            <p className="text-base sm:text-lg text-[#9CA6B8] leading-relaxed font-light">
+              Échangeons sur vos enjeux opérationnels et vos exigences techniques. Nos consultants et ingénieurs analysent vos besoins pour définir une réponse adaptée et pérenne.
             </p>
+          </div>
 
-            {/* CTAs: Primary & Secondary */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2 sm:pt-4">
-              {/* Primary CTA */}
+          {/* CTA & Direct Contact */}
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href={`mailto:${brandConfig.contact.email}?subject=Échange%20autour%20d'un%20projet%20logiciel%20-%20RÉVA%20Consulting`}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#08090C] bg-[#C59B45] hover:bg-[#D4B066] active:bg-[#AA8132] rounded-[10px] transition-all duration-200 shadow-[0_2px_14px_rgba(197,155,69,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45] cursor-pointer"
+            >
+              <span>Échanger avec notre équipe</span>
+              <ArrowRight className="size-4 shrink-0" />
+            </a>
+          </div>
+
+          {/* Direct channels */}
+          <div className="pt-8 border-t border-white/[0.06] text-xs font-mono text-[#758195] space-y-1">
+            <div>
+              Canal direct :{' '}
               <a
-                href={`mailto:${brandConfig.contact.email}?subject=Échange%20autour%20d'un%20projet%20logiciel%20-%20RÉVA%20Consulting`}
-                className={cn(
-                  'w-full sm:w-auto inline-flex items-center justify-center gap-2.5',
-                  'px-7 sm:px-9 py-4 rounded-[12px] text-sm font-semibold tracking-wide',
-                  'text-[#08090C] bg-[#C59B45] hover:bg-[#D4B066] active:bg-[#AA8132]',
-                  'transition-all duration-200 shadow-[0_4px_20px_rgba(197,155,69,0.28)]',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090C] focus-visible:ring-[#C59B45]'
-                )}
+                href={`mailto:${brandConfig.contact.email}`}
+                className="text-[#CAD0DB] hover:text-[#DFC489] transition-colors"
               >
-                <span>Parlons de votre projet</span>
-                <ArrowRight className="size-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
+                {brandConfig.contact.email}
               </a>
-
-              {/* Secondary CTA */}
-              <Link
-                href={`/${locale}#contact`}
-                className={cn(
-                  'w-full sm:w-auto inline-flex items-center justify-center gap-2.5',
-                  'px-7 sm:px-8 py-4 rounded-[12px] text-sm font-medium tracking-wide',
-                  'text-[#CAD0DB] hover:text-[#F8FAFC] bg-[#12151D] hover:bg-[#181C26]',
-                  'border border-white/[0.12] hover:border-white/[0.24]',
-                  'transition-all duration-200',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090C] focus-visible:ring-[#CAD0DB]'
-                )}
-              >
-                <Mail className="size-4 text-[#CAD0DB] shrink-0" />
-                <span>Nous contacter</span>
-              </Link>
             </div>
-
-            {/* Engineering Commitments & Reassurance Bar */}
-            <div className="pt-8 sm:pt-10 border-t border-white/[0.06] grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
-              {/* Commitment 1 */}
-              <div className="flex items-start gap-3">
-                <ShieldCheck className="size-4 text-[#C59B45] shrink-0 mt-0.5" />
-                <div>
-                  <span className="text-xs font-semibold text-[#F8FAFC] block">
-                    Confidentialité & Rigueur
-                  </span>
-                  <span className="text-[11px] text-[#758195] font-mono leading-tight block mt-0.5">
-                    Échange direct avec des ingénieurs d&apos;expérience
-                  </span>
-                </div>
-              </div>
-
-              {/* Commitment 2 */}
-              <div className="flex items-start gap-3">
-                <Clock className="size-4 text-[#1D68F2] shrink-0 mt-0.5" />
-                <div>
-                  <span className="text-xs font-semibold text-[#F8FAFC] block">
-                    Réactivité sous 24h
-                  </span>
-                  <span className="text-[11px] text-[#758195] font-mono leading-tight block mt-0.5">
-                    Prise en charge rapide de votre demande
-                  </span>
-                </div>
-              </div>
-
-              {/* Commitment 3 */}
-              <div className="flex items-start gap-3">
-                <Terminal className="size-4 text-[#CAD0DB] shrink-0 mt-0.5" />
-                <div>
-                  <span className="text-xs font-semibold text-[#F8FAFC] block">
-                    Cadrage Technique
-                  </span>
-                  <span className="text-[11px] text-[#758195] font-mono leading-tight block mt-0.5">
-                    Audit architectural & Démonstration Élancé ERP
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Final Signature Monogram */}
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#525D6F]">
-              <div className="flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-[#10B981]" />
-                <span className="text-[#8E9AA8]">
-                  Canal direct :{' '}
-                  <a
-                    href={`mailto:${brandConfig.contact.email}`}
-                    className="text-[#DFC489] hover:underline"
-                  >
-                    {brandConfig.contact.email}
-                  </a>
-                </span>
-              </div>
-              <span className="tracking-widest uppercase">
-                {brandConfig.legalName} {'//'} {brandConfig.tagline}
-              </span>
+            <div className="text-[11px] text-[#545F72] pt-1">
+              {brandConfig.name} &bull; Développer. Tester. Optimiser.
             </div>
           </div>
         </motion.div>
