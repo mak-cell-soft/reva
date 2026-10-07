@@ -111,15 +111,20 @@ export function Navbar({ locale = 'fr' }: NavbarProps) {
           {/* Left: Dedicated RÉVA Navbar Brand Logo */}
           <Link
             href={`/${locale}`}
-            className="flex items-center self-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45]/80 shrink-0 select-none py-0.5 transition-opacity hover:opacity-90"
+            className="group relative flex items-center self-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45]/80 shrink-0 select-none py-1 transition-transform duration-200 hover:scale-[1.01]"
             aria-label={`${brandConfig.name} — Accueil`}
           >
+            {/* Very subtle localized soft glow behind navbar logo for enhanced contrast */}
+            <div
+              className="absolute -inset-x-3 -inset-y-2 bg-[radial-gradient(ellipse_at_center,_rgba(29,104,242,0.12)_0%,_rgba(197,155,69,0.08)_50%,_transparent_75%)] rounded-full pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+              aria-hidden="true"
+            />
             <Image
               src="/images/logos/logo-reva-navbar.png"
               alt={brandConfig.name}
               width={2103}
               height={748}
-              className="h-[38px] sm:h-[42px] lg:h-[48px] xl:h-[50px] w-auto object-contain"
+              className="relative h-[44px] sm:h-[48px] lg:h-[54px] xl:h-[58px] w-auto object-contain drop-shadow-[0_2px_12px_rgba(29,104,242,0.22)] brightness-[1.12] contrast-[1.10] transition-all duration-300"
               priority
             />
           </Link>
@@ -254,7 +259,7 @@ export function Navbar({ locale = 'fr' }: NavbarProps) {
                       alt={brandConfig.name}
                       width={2103}
                       height={748}
-                      className="h-[34px] sm:h-[38px] w-auto object-contain"
+                      className="h-[38px] sm:h-[44px] w-auto object-contain drop-shadow-[0_2px_10px_rgba(29,104,242,0.22)] brightness-[1.12] contrast-[1.10]"
                     />
                   </Link>
                   <span className="text-[10px] font-mono uppercase tracking-widest text-[#758195]">
