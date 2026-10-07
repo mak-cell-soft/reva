@@ -1,4 +1,4 @@
-import { Plus_Jakarta_Sans, Outfit, JetBrains_Mono } from 'next/font/google';
+import { Plus_Jakarta_Sans, Outfit, JetBrains_Mono, Alexandria } from 'next/font/google';
 
 /**
  * Display Typography: Plus Jakarta Sans
@@ -34,8 +34,19 @@ export const fontMono = JetBrains_Mono({
 });
 
 /**
+ * Arabic Typography: Alexandria
+ * Purpose: Architectural, modern geometric Arabic typography paired with Plus Jakarta Sans & Outfit.
+ */
+export const fontArabic = Alexandria({
+  subsets: ['arabic'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-arabic',
+  display: 'swap',
+});
+
+/**
  * Helper to bundle font CSS variables for root layout injection.
  */
 export function getFontVariables(): string {
-  return `${fontDisplay.variable} ${fontBody.variable} ${fontMono.variable}`;
+  return `${fontDisplay.variable} ${fontBody.variable} ${fontMono.variable} ${fontArabic.variable}`;
 }

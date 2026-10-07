@@ -7,6 +7,7 @@
 import * as React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { getDictionary } from '@/lib/i18n/dictionaries';
 
 interface PositioningSectionProps {
   /** Optional locale parameter */
@@ -15,33 +16,12 @@ interface PositioningSectionProps {
   className?: string;
 }
 
-interface Principle {
-  readonly number: string;
-  readonly title: string;
-  readonly description: string;
-}
-
-export function PositioningSection({ className }: PositioningSectionProps) {
+export function PositioningSection({ locale = 'fr', className }: PositioningSectionProps) {
   const shouldReduceMotion = useReducedMotion();
+  const dict = getDictionary(locale);
 
   // The 3 foundational pillars of RÉVA's signature: Développer. Tester. Optimiser.
-  const principles: readonly Principle[] = [
-    {
-      number: '01',
-      title: 'Développer',
-      description: 'Concevoir des logiciels métier et des architectures logicielles sur-mesure, pensés pour les réalités opérationnelles de votre entreprise.',
-    },
-    {
-      number: '02',
-      title: 'Tester',
-      description: 'Éprouver la robustesse, la sécurité et la conformité de chaque composant à travers une discipline d’ingénierie QA continue.',
-    },
-    {
-      number: '03',
-      title: 'Optimiser',
-      description: 'Faire évoluer vos systèmes, supprimer les goulets d’étranglement et pérenniser vos actifs numériques face à votre croissance.',
-    },
-  ];
+  const principles = dict.positioning.principles;
 
   const transitionFast = { duration: 0.5, ease: [0.16, 1, 0.3, 1] };
 
@@ -66,7 +46,7 @@ export function PositioningSection({ className }: PositioningSectionProps) {
               transition={transitionFast}
             >
               <span className="text-xs font-mono font-semibold tracking-[0.2em] uppercase text-[#DFC489]">
-                LE CABINET
+                {dict.positioning.badge}
               </span>
             </motion.div>
 
@@ -77,9 +57,9 @@ export function PositioningSection({ className }: PositioningSectionProps) {
               transition={{ ...transitionFast, delay: 0.08 }}
               className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#F8FAFC] leading-[1.15]"
             >
-              De l&apos;idée à la solution.
+              {dict.positioning.titlePart1}
               <span className="block mt-2 text-[#CAD0DB] font-normal">
-                De la solution à la qualité.
+                {dict.positioning.titlePart2}
               </span>
             </motion.h2>
 
@@ -90,7 +70,7 @@ export function PositioningSection({ className }: PositioningSectionProps) {
               transition={{ ...transitionFast, delay: 0.16 }}
               className="text-base sm:text-lg text-[#9CA6B8] leading-relaxed font-light"
             >
-              RÉVA réunit l&apos;exigence du conseil technologique et la rigueur d&apos;un éditeur de logiciels. Nous accompagnons les organisations qui ne peuvent pas se permettre des pannes ou des approximations dans leurs outils métier.
+              {dict.positioning.description}
             </motion.p>
           </div>
 

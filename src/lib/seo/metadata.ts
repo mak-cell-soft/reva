@@ -50,6 +50,22 @@ export const TARGET_KEYWORDS_EN = [
   'digital transformation',
 ] as const;
 
+export const TARGET_KEYWORDS_AR = [
+  'تطوير برمجيات تونس',
+  'تطوير نظام ERP تونس',
+  'شركة برمجيات تونس',
+  'نظام إدارة المؤسسات تونس',
+  'إيلانسي ERP',
+  'تطوير تطبيقات الويب',
+  'تطوير تطبيقات الهاتف',
+  'فحص البرمجيات تونس',
+  'هندسة ضمان الجودة QA',
+  'أتمتة الاختبارات البرمجية',
+  'تكامل الأنظمة المعلوماتية',
+  'التحول الرقمي للمؤسسات',
+  'هندسة البرمجيات',
+] as const;
+
 export interface StructuredDataOptions {
   locale: string;
 }
@@ -59,17 +75,31 @@ export interface StructuredDataOptions {
  */
 export function buildLocalizedMetadata(locale: string): Metadata {
   const isEn = locale === 'en';
+  const isAr = locale === 'ar';
   const baseUrl = brandConfig.url;
 
-  const titleDefault = isEn
-    ? 'RÉVA Consulting — Software Development & QA Testing Engineering'
-    : 'RÉVA Consulting — Société de développement logiciel & de test informatique';
+  let titleDefault = 'RÉVA Consulting — Société de développement logiciel & de test informatique';
+  let description =
+    'RÉVA Consulting est une société d’ingénierie logicielle et éditeur d’Élancé ERP en Tunisie. Spécialiste du développement logiciel sur-mesure, des applications web & mobiles, des tests logiciels et de l’automatisation QA.';
+  let keywords: string[] = [...TARGET_KEYWORDS_FR];
+  let ogLocale = 'fr_FR';
+  let alternateLocales = ['en_US', 'ar_TN'];
 
-  const description = isEn
-    ? 'RÉVA Consulting is a software engineering company and publisher of Élancé ERP in Tunisia. Specialized in custom software development, web & mobile applications, software testing, and QA automation.'
-    : 'RÉVA Consulting est une société d’ingénierie logicielle et éditeur d’Élancé ERP en Tunisie. Spécialiste du développement logiciel sur-mesure, des applications web & mobiles, des tests logiciels et de l’automatisation QA.';
-
-  const keywords = isEn ? [...TARGET_KEYWORDS_EN] : [...TARGET_KEYWORDS_FR];
+  if (isEn) {
+    titleDefault = 'RÉVA Consulting — Software Development & QA Testing Engineering';
+    description =
+      'RÉVA Consulting is a software engineering company and publisher of Élancé ERP in Tunisia. Specialized in custom software development, web & mobile applications, software testing, and QA automation.';
+    keywords = [...TARGET_KEYWORDS_EN];
+    ogLocale = 'en_US';
+    alternateLocales = ['fr_FR', 'ar_TN'];
+  } else if (isAr) {
+    titleDefault = 'ريفا كونسلتينغ — هندسة وتطوير البرمجيات وفحص الأنظمة المعلوماتية';
+    description =
+      'ريفا كونسلتينغ هي شركة متخصصة في هندسة وتطوير البرمجيات وناشر نظام إيلانسي ERP في تونس. حلول برمجية مخصصة، تطبيقات ويب وهاتف وأتمتة شاملة لفحص الجودة.';
+    keywords = [...TARGET_KEYWORDS_AR];
+    ogLocale = 'ar_TN';
+    alternateLocales = ['fr_FR', 'en_US'];
+  }
 
   return {
     title: {
@@ -87,6 +117,7 @@ export function buildLocalizedMetadata(locale: string): Metadata {
       languages: {
         fr: `${baseUrl}/fr`,
         en: `${baseUrl}/en`,
+        ar: `${baseUrl}/ar`,
         'x-default': `${baseUrl}/fr`,
       },
     },
@@ -95,8 +126,8 @@ export function buildLocalizedMetadata(locale: string): Metadata {
       description,
       url: `${baseUrl}/${locale}`,
       siteName: brandConfig.name,
-      locale: isEn ? 'en_US' : 'fr_FR',
-      alternateLocale: isEn ? ['fr_FR'] : ['en_US'],
+      locale: ogLocale,
+      alternateLocale: alternateLocales,
       type: 'website',
       images: [
         {

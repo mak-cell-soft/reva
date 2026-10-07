@@ -1,6 +1,5 @@
 // NOTE: Final Signature CTA Section for RÉVA Consulting.
 // Quiet, confident, mature consulting invitation.
-// Eliminates artificial badge boxes, fake guarantee pills, and decorative icons.
 'use client';
 
 import * as React from 'react';
@@ -9,6 +8,8 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { brandConfig } from '@/lib/brand.config';
 import { ArrowRight } from 'lucide-react';
+import { getDictionary } from '@/lib/i18n/dictionaries';
+import type { Locale } from '@/lib/i18n/config';
 
 interface CtaSectionProps {
   /** Optional active locale segment */
@@ -17,14 +18,18 @@ interface CtaSectionProps {
   className?: string;
 }
 
-export function CtaSection({ className }: CtaSectionProps) {
+export function CtaSection({ locale = 'fr', className }: CtaSectionProps) {
   const shouldReduceMotion = useReducedMotion();
   const transitionSmooth = { duration: 0.5, ease: [0.16, 1, 0.3, 1] };
+  const dict = getDictionary(locale as Locale);
+  const t = dict.cta;
+
+  const mailSubject = encodeURIComponent(`${brandConfig.name} - ${t.buttonText}`);
 
   return (
     <section
       id="contact"
-      aria-label="Contact et engagement projet RÉVA Consulting"
+      aria-label={t.title}
       className={cn(
         'relative bg-[#08090C] py-24 sm:py-32 lg:py-40 border-t border-white/[0.06] overflow-hidden',
         className
@@ -50,35 +55,35 @@ export function CtaSection({ className }: CtaSectionProps) {
               />
             </div>
             <span className="text-xs font-mono font-semibold tracking-[0.2em] uppercase text-[#DFC489]">
-              RÉVA CONSULTING
+              {brandConfig.name.toUpperCase()}
             </span>
           </div>
 
           {/* Heading */}
           <div className="space-y-4 max-w-2xl mx-auto">
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#F8FAFC] leading-[1.15]">
-              Un projet logiciel à concevoir ou à fiabiliser ?
+              {t.title}
             </h2>
             <p className="text-base sm:text-lg text-[#9CA6B8] leading-relaxed font-light">
-              Échangeons sur vos enjeux opérationnels et vos exigences techniques. Nos consultants et ingénieurs analysent vos besoins pour définir une réponse adaptée et pérenne.
+              {t.description}
             </p>
           </div>
 
           {/* CTA & Direct Contact */}
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href={`mailto:${brandConfig.contact.email}?subject=Échange%20autour%20d'un%20projet%20logiciel%20-%20RÉVA%20Consulting`}
+              href={`mailto:${brandConfig.contact.email}?subject=${mailSubject}`}
               className="inline-flex items-center justify-center gap-2 px-8 py-4 text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#08090C] bg-[#C59B45] hover:bg-[#D4B066] active:bg-[#AA8132] rounded-[10px] transition-all duration-200 shadow-[0_2px_14px_rgba(197,155,69,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45] cursor-pointer"
             >
-              <span>Échanger avec notre équipe</span>
-              <ArrowRight className="size-4 shrink-0" />
+              <span>{t.buttonText}</span>
+              <ArrowRight className="size-4 shrink-0 rtl:rotate-180" />
             </a>
           </div>
 
           {/* Direct channels */}
           <div className="pt-8 border-t border-white/[0.06] text-xs font-mono text-[#758195] space-y-1">
             <div>
-              Canal direct :{' '}
+              {t.directChannel}{' '}
               <a
                 href={`mailto:${brandConfig.contact.email}`}
                 className="text-[#CAD0DB] hover:text-[#DFC489] transition-colors"
@@ -87,7 +92,7 @@ export function CtaSection({ className }: CtaSectionProps) {
               </a>
             </div>
             <div className="text-[11px] text-[#545F72] pt-1">
-              {brandConfig.name} &bull; Développer. Tester. Optimiser.
+              {t.signature}
             </div>
           </div>
         </motion.div>

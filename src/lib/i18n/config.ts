@@ -6,13 +6,13 @@
  * Architecture is designed for French first, ready for Arabic and English.
  */
 
-export const LOCALES = ['fr', 'en'] as const;
+export const LOCALES = ['fr', 'en', 'ar'] as const;
 
 export type Locale = (typeof LOCALES)[number];
 
-export const ALL_LOCALES = ['fr', 'en', 'ar'] as const;
+export const ALL_LOCALES = LOCALES;
 
-export type AllLocale = (typeof ALL_LOCALES)[number];
+export type AllLocale = Locale;
 
 export const DEFAULT_LOCALE: Locale = 'fr';
 

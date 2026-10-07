@@ -1,13 +1,11 @@
-// NOTE: Official RÉVA Consulting Public Footer.
-// Minimal, elegant, premium dark design.
-// Contains required sections: Identity & Tagline, Navigation, Services, Élancé ERP mention,
-// Verified Contact information only (no invented addresses or phone numbers), and Legal notices.
 import * as React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { brandConfig } from '@/lib/brand.config';
 import { cn } from '@/lib/utils';
 import { Mail, Globe, ArrowUpRight } from 'lucide-react';
+import { getDictionary } from '@/lib/i18n/dictionaries';
+import type { Locale } from '@/lib/i18n/config';
 
 interface FooterProps {
   /** Optional active locale segment */
@@ -18,30 +16,32 @@ interface FooterProps {
 
 export function Footer({ locale = 'fr', className }: FooterProps) {
   const currentYear = new Date().getFullYear();
+  const dict = getDictionary(locale as Locale);
+  const t = dict.footer;
 
-  // Navigation Links strictly conforming to specification
+  // Navigation Links strictly conforming to localized dictionary
   const navLinks = [
-    { label: 'Le Cabinet', href: `/${locale}#a-propos` },
-    { label: 'Expertises', href: `/${locale}#services` },
-    { label: 'Élancé ERP', href: `/${locale}#elance-erp`, isSpecial: true },
-    { label: 'Méthode', href: `/${locale}#methodologie` },
-    { label: 'Réalisations', href: `/${locale}#realisations` },
-    { label: 'Contact', href: `/${locale}#contact` },
+    { label: dict.nav.cabinet, href: `/${locale}#a-propos` },
+    { label: dict.nav.expertises, href: `/${locale}#services` },
+    { label: dict.nav.elanceErp, href: `/${locale}#elance-erp`, isSpecial: true },
+    { label: dict.nav.methode, href: `/${locale}#methodologie` },
+    { label: dict.nav.realisations, href: `/${locale}#realisations` },
+    { label: dict.nav.contact, href: `/${locale}#contact` },
   ];
 
   // Core Service Pillars
   const serviceLinks = [
-    { label: 'Logiciels Métier & Progiciels', href: `/${locale}#services` },
+    { label: dict.services.pillars[0]?.title ?? 'Logiciels Métier', href: `/${locale}#services` },
     { label: 'Élancé ERP', href: `/${locale}#elance-erp` },
-    { label: 'Assurance Qualité & QA', href: `/${locale}#expertise` },
-    { label: 'Automatisation des Tests', href: `/${locale}#expertise` },
-    { label: 'Intégration & TMA', href: `/${locale}#services` },
+    { label: dict.services.pillars[1]?.title ?? 'Assurance Qualité & QA', href: `/${locale}#expertise` },
+    { label: dict.testingQa.disciplines[2]?.title ?? 'Automatisation des Tests', href: `/${locale}#expertise` },
+    { label: dict.services.pillars[2]?.title ?? 'Intégration & TMA', href: `/${locale}#services` },
   ];
 
   return (
     <footer
       role="contentinfo"
-      aria-label="Pied de page RÉVA Consulting"
+      aria-label={`${brandConfig.name} — Footer`}
       className={cn(
         'relative bg-[#06070A] text-[#CAD0DB] border-t border-white/[0.08] overflow-hidden',
         className
@@ -75,21 +75,19 @@ export function Footer({ locale = 'fr', className }: FooterProps) {
                 />
               </Link>
               <p className="text-xs sm:text-[13px] font-medium text-[#DFC489] tracking-wide leading-snug">
-                RéVA – Consulting : Réaliser Votre Ambition Consulting
+                {t.tagline}
               </p>
             </div>
 
             <p className="text-xs sm:text-sm text-[#8E9AA8] leading-relaxed max-w-sm">
-              Éditeur de solutions logicielles et cabinet d&apos;ingénierie du test informatique. Nous
-              accompagnons les organisations dans la conception, la fiabilisation et le pilotage de leurs
-              systèmes critiques.
+              {t.description}
             </p>
           </div>
 
           {/* Col 2: Navigation Links (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
             <span className="text-xs font-mono uppercase tracking-[0.16em] text-[#F8FAFC] font-semibold block">
-              Navigation
+              {t.navTitle}
             </span>
             <ul className="space-y-2.5 text-xs sm:text-sm">
               {navLinks.map((item) => (
@@ -113,10 +111,10 @@ export function Footer({ locale = 'fr', className }: FooterProps) {
             </ul>
           </div>
 
-          {/* Col 3: Services (8 categories) (3 cols) */}
+          {/* Col 3: Services (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
             <span className="text-xs font-mono uppercase tracking-[0.16em] text-[#F8FAFC] font-semibold block">
-              Services
+              {t.servicesTitle}
             </span>
             <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5 text-xs sm:text-sm">
               {serviceLinks.map((item) => (
@@ -143,20 +141,20 @@ export function Footer({ locale = 'fr', className }: FooterProps) {
                 <Link
                   href={`/${locale}#elance-erp`}
                   className="text-[#758195] hover:text-[#C59B45] transition-colors"
-                  aria-label="En savoir plus sur Élancé ERP"
+                  aria-label={t.learnMoreElance}
                 >
-                  <ArrowUpRight className="size-3.5" />
+                  <ArrowUpRight className="size-3.5 rtl:-scale-x-100" />
                 </Link>
               </div>
               <p className="text-xs text-[#CAD0DB] leading-relaxed">
-                Élancé ERP est une solution développée et commercialisée par RÉVA Consulting.
+                {t.elanceNotice}
               </p>
             </div>
 
             {/* Verified Contact Details (Strictly no invented numbers or addresses) */}
             <div className="space-y-3 pt-1">
               <span className="text-xs font-mono uppercase tracking-[0.16em] text-[#F8FAFC] font-semibold block">
-                Contact
+                {t.contactTitle}
               </span>
               <ul className="space-y-2 text-xs sm:text-sm font-mono text-[#8E9AA8]">
                 <li>
@@ -188,29 +186,26 @@ export function Footer({ locale = 'fr', className }: FooterProps) {
         <div className="pt-10 pb-8 border-b border-white/[0.06] grid grid-cols-1 md:grid-cols-2 gap-8 text-[11px] text-[#758195]">
           <div id="mentions-legales" className="space-y-2 scroll-mt-24">
             <span className="font-mono uppercase tracking-wider text-[#CAD0DB] font-semibold block">
-              Mentions Légales
+              {t.legalTitle}
             </span>
             <p className="leading-relaxed">
-              <strong>Éditeur :</strong> {brandConfig.legalName} — Société d’ingénierie logicielle & d’assurance qualité.
-              Domaine : {brandConfig.domain}. Contact : {brandConfig.contact.email}.
+              <strong>{t.legalEditor}</strong> {brandConfig.legalName} — {t.legalEditorDesc}{' '}
+              {t.legalDomain} {brandConfig.domain}. {t.legalContact} {brandConfig.contact.email}.
             </p>
             <p className="leading-relaxed">
-              <strong>Propriété intellectuelle :</strong> L’ensemble des contenus, marques, logos (notamment RÉVA Consulting et Élancé ERP)
-              et architectures présentés sur ce site sont protégés par les lois en vigueur sur la propriété intellectuelle.
+              <strong>{t.legalIp}</strong> {t.legalIpDesc}
             </p>
           </div>
 
           <div id="politique-confidentialite" className="space-y-2 scroll-mt-24">
             <span className="font-mono uppercase tracking-wider text-[#CAD0DB] font-semibold block">
-              Politique de Confidentialité
+              {t.privacyTitle}
             </span>
             <p className="leading-relaxed">
-              <strong>Données personnelles :</strong> Les informations recueillies via nos formulaires ou par échange direct
-              sont strictement réservées au traitement des demandes de projets et démonstrations Élancé ERP. Aucune donnée n’est cédée à des tiers.
+              <strong>{t.privacyData}</strong> {t.privacyDataDesc}
             </p>
             <p className="leading-relaxed">
-              <strong>Cookies :</strong> Ce site n’utilise aucun traceur publicitaire intrusif. Seuls les composants strictement nécessaires
-              à la navigation, à la sécurité et à la mesure d’audience anonyme sont mobilisés.
+              <strong>{t.privacyCookies}</strong> {t.privacyCookiesDesc}
             </p>
           </div>
         </div>
@@ -219,7 +214,7 @@ export function Footer({ locale = 'fr', className }: FooterProps) {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#758195]">
           <div>
             <span>
-              &copy; {currentYear} {brandConfig.name}. Tous droits réservés.
+              &copy; {currentYear} {brandConfig.name}. {t.copyright}
             </span>
           </div>
 
@@ -228,14 +223,14 @@ export function Footer({ locale = 'fr', className }: FooterProps) {
               href={`/${locale}#mentions-legales`}
               className="hover:text-[#CAD0DB] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#C59B45]"
             >
-              Mentions légales
+              {t.legalLink}
             </Link>
             <span className="size-1 rounded-full bg-white/[0.12]" />
             <Link
               href={`/${locale}#politique-confidentialite`}
               className="hover:text-[#CAD0DB] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#C59B45]"
             >
-              Politique de confidentialité
+              {t.privacyLink}
             </Link>
           </div>
         </div>

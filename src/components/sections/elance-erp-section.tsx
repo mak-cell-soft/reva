@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { ArrowUpRight } from 'lucide-react';
+import { getDictionary } from '@/lib/i18n/dictionaries';
 
 interface ElanceSectionProps {
   /** Optional active locale segment */
@@ -17,33 +18,12 @@ interface ElanceSectionProps {
   className?: string;
 }
 
-interface ModuleArea {
-  readonly title: string;
-  readonly scope: string;
-}
-
-export function ElanceErpSection({ className }: ElanceSectionProps) {
+export function ElanceErpSection({ locale = 'fr', className }: ElanceSectionProps) {
   const shouldReduceMotion = useReducedMotion();
   const transitionFast = { duration: 0.5, ease: [0.16, 1, 0.3, 1] };
+  const dict = getDictionary(locale);
 
-  const operationalAreas: readonly ModuleArea[] = [
-    {
-      title: 'Gestion Commerciale & Ventes',
-      scope: 'Devis, commandes clients, facturation, suivi des encaissements et calcul des marges en temps réel.',
-    },
-    {
-      title: 'Stocks, Achats & Approvisionnement',
-      scope: 'Multi-dépôts, inventaires tournants, suivi des réceptions fournisseurs et alertes de réapprovisionnement.',
-    },
-    {
-      title: 'Suivi de Chantiers & Affaires',
-      scope: 'Affectation des ressources, suivi budgétaire par affaire, avancement des travaux et rentabilité d’exécution.',
-    },
-    {
-      title: 'Pilotage & Tableaux de Bord',
-      scope: 'Consolidation financière, indicateurs de performance opérationnels et exports comptables conformes.',
-    },
-  ];
+  const operationalAreas = dict.elanceErp.modules;
 
   return (
     <section
@@ -71,7 +51,7 @@ export function ElanceErpSection({ className }: ElanceSectionProps) {
               transition={transitionFast}
             >
               <span className="text-xs font-mono font-semibold tracking-[0.2em] uppercase text-[#60A5FA]">
-                PRODUIT PROPRIÉTAIRE &bull; ÉDITION LOGICIELLE
+                {dict.elanceErp.badge}
               </span>
             </motion.div>
 
@@ -83,13 +63,10 @@ export function ElanceErpSection({ className }: ElanceSectionProps) {
               transition={{ ...transitionFast, delay: 0.08 }}
               className="space-y-5 sm:space-y-6"
             >
-              {/* Flagship identity lockup.
-                  NOTE: Logo container enlarged ~2× (size-14 → size-28 on sm+) so Élancé reads instantly
-                  as RÉVA's flagship product. Mobile uses size-20 to avoid excessive vertical space.
-                  The official SVG asset is reused as-is (object-contain = no distortion). */}
+              {/* Flagship identity lockup. */}
               <div className="flex items-center gap-5 sm:gap-6">
                 <div className="relative shrink-0">
-                  {/* Soft blue halo behind the mark — adds presence without competing with the Hero */}
+                  {/* Soft blue halo behind the mark */}
                   <div
                     className="absolute -inset-4 rounded-full bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.28)_0%,_transparent_70%)] blur-xl pointer-events-none"
                     aria-hidden="true"
@@ -109,17 +86,17 @@ export function ElanceErpSection({ className }: ElanceSectionProps) {
                     Élancé <span className="text-[#3B82F6]">ERP</span>
                   </h2>
                   <p className="text-[11px] sm:text-xs font-mono text-[#758195] tracking-wider uppercase mt-2 sm:mt-3">
-                    Développé et commercialisé par RÉVA Consulting
+                    {dict.elanceErp.subtitle}
                   </p>
                 </div>
               </div>
 
               <p className="text-base sm:text-lg text-[#CAD0DB] font-light leading-relaxed pt-2">
-                Élancé est un progiciel de gestion intégré conçu pour unifier l’ensemble des opérations de l’entreprise au sein d’une architecture unique, modulaire et souveraine.
+                {dict.elanceErp.description1}
               </p>
 
               <p className="text-sm text-[#9CA6B8] font-light leading-relaxed">
-                Né de notre expérience du terrain et de la rigueur de nos équipes d&apos;ingénierie, Élancé répond aux besoins des structures cherchant à remplacer des outils dispersés par une solution centralisée, fiable et pérenne.
+                {dict.elanceErp.description2}
               </p>
             </motion.div>
 
@@ -138,26 +115,26 @@ export function ElanceErpSection({ className }: ElanceSectionProps) {
                 className="inline-flex items-center gap-2.5 px-6 sm:px-7 py-3.5 text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#08090C] bg-[#C59B45] hover:bg-[#D4B066] active:bg-[#AA8132] rounded-[10px] transition-all duration-200 shadow-[0_2px_14px_rgba(197,155,69,0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45] cursor-pointer"
                 aria-label="Accéder au site officiel Élancé ERP sur acya.site (ouvre dans un nouvel onglet)"
               >
-                <span>Découvrir la plateforme Élancé</span>
-                <ArrowUpRight className="size-4 shrink-0" />
+                <span>{dict.elanceErp.cta}</span>
+                <ArrowUpRight className="size-4 shrink-0 rtl:-scale-x-100" />
               </a>
               <span className="block mt-2 text-xs font-mono text-[#758195]">
-                Accès direct au portail produit : acya.site
+                {dict.elanceErp.portalDirect}
               </span>
             </motion.div>
 
           </div>
 
-          {/* RIGHT: Operational Architecture & Core Modules (Clean, no fake dashboard) */}
+          {/* RIGHT: Operational Architecture & Core Modules */}
           <div className="lg:col-span-7 space-y-8">
             
             <div className="p-8 sm:p-10 rounded-[20px] bg-[#0E1118] border border-white/[0.08] space-y-8">
               <div>
                 <h3 className="font-display text-xl sm:text-2xl font-bold text-[#F8FAFC]">
-                  Périmètre fonctionnel unifié
+                  {dict.elanceErp.scopeTitle}
                 </h3>
                 <p className="text-sm text-[#8E9AA8] font-light mt-1">
-                  Les données circulent sans rupture entre les services pour une visibilité complète de l&apos;activité.
+                  {dict.elanceErp.scopeDesc}
                 </p>
               </div>
 
@@ -180,12 +157,12 @@ export function ElanceErpSection({ className }: ElanceSectionProps) {
               {/* Deployment & Architecture Facts */}
               <div className="pt-6 border-t border-white/[0.06] grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono text-[#8E9AA8]">
                 <div>
-                  <span className="text-[#CAD0DB] font-semibold block mb-0.5">MODÈLE DE DÉPLOIEMENT</span>
-                  <span>Cloud dédié ou hébergement sur vos propres serveurs (On-premise).</span>
+                  <span className="text-[#CAD0DB] font-semibold block mb-0.5">{dict.elanceErp.deploymentModelLabel}</span>
+                  <span>{dict.elanceErp.deploymentModelValue}</span>
                 </div>
                 <div>
-                  <span className="text-[#CAD0DB] font-semibold block mb-0.5">ACCOMPAGNEMENT RÉVA</span>
-                  <span>Paramétrage métier, reprise des données et formation des utilisateurs.</span>
+                  <span className="text-[#CAD0DB] font-semibold block mb-0.5">{dict.elanceErp.revaSupportLabel}</span>
+                  <span>{dict.elanceErp.revaSupportValue}</span>
                 </div>
               </div>
             </div>

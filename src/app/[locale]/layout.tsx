@@ -7,6 +7,7 @@ import { Navbar } from '@/components/navigation/navbar';
 import { Footer } from '@/components/navigation/footer';
 import { buildLocalizedMetadata } from '@/lib/seo/metadata';
 import { StructuredData } from '@/components/seo/structured-data';
+import { getDictionary } from '@/lib/i18n/dictionaries';
 
 export const viewport: Viewport = {
   themeColor: '#08090C',
@@ -47,6 +48,8 @@ export default async function LocaleLayout({
   const localeConfig = LOCALE_CONFIGS[locale as AllLocale];
   const fontClasses = getFontVariables();
 
+  const dict = getDictionary(locale);
+
   return (
     <html
       lang={localeConfig?.htmlLang ?? locale}
@@ -60,9 +63,9 @@ export default async function LocaleLayout({
         {/* WCAG Accessibility: Skip to main content link for keyboard navigation */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#C59B45] focus:text-[#08090C] focus:rounded-[8px] focus:font-semibold focus:shadow-xl focus:outline-none transition-transform"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:start-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#C59B45] focus:text-[#08090C] focus:rounded-[8px] focus:font-semibold focus:shadow-xl focus:outline-none transition-transform"
         >
-          {locale === 'en' ? 'Skip to main content' : 'Aller au contenu principal'}
+          {dict.common.skipToContent}
         </a>
         <Navbar locale={locale} />
         <div className="flex-1 pt-16 sm:pt-20">

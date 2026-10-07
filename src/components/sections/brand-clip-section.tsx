@@ -9,7 +9,7 @@ import * as React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Play, Pause, Volume2, VolumeX, Maximize2, Minimize2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { brandConfig } from '@/lib/brand.config';
+import { getDictionary } from '@/lib/i18n/dictionaries';
 
 interface BrandClipSectionProps {
   /** Optional active locale segment */
@@ -18,16 +18,13 @@ interface BrandClipSectionProps {
   className?: string;
 }
 
-interface StrategicPillar {
-  readonly index: string;
-  readonly title: string;
-  readonly description: string;
-}
-
-export function BrandClipSection({ className }: BrandClipSectionProps) {
+export function BrandClipSection({ locale = 'fr', className }: BrandClipSectionProps) {
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
+
+  // Localized dictionary for active locale
+  const dict = getDictionary(locale);
 
   // Playback & Audio States
   const [isPlaying, setIsPlaying] = React.useState(false);
@@ -40,23 +37,7 @@ export function BrandClipSection({ className }: BrandClipSectionProps) {
   const transitionSmooth = { duration: 0.5, ease: [0.16, 1, 0.3, 1] };
 
   // Strategic pillars grounding the video in the firm's advisory & engineering doctrine
-  const pillars: readonly StrategicPillar[] = [
-    {
-      index: '01',
-      title: 'Ingénierie & Sur-Mesure',
-      description: 'Conception d’architectures applicatives et ERP adaptées aux flux opérationnels complexes.',
-    },
-    {
-      index: '02',
-      title: 'Discipline QA & Fiabilité',
-      description: 'Protocoles continus de qualification et automatisation des tests pour des systèmes résilients.',
-    },
-    {
-      index: '03',
-      title: 'Édition & Souveraineté',
-      description: 'Concepteur d’Élancé ERP, alliant indépendance technologique et pérennité opérationnelle.',
-    },
-  ];
+  const pillars = dict.brandClip.pillars;
 
   // IntersectionObserver: Load and play when visible, pause when scrolled away
   React.useEffect(() => {
@@ -215,7 +196,7 @@ export function BrandClipSection({ className }: BrandClipSectionProps) {
           >
             <span className="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-[0.2em] uppercase text-[#DFC489]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C59B45] shadow-[0_0_8px_rgba(197,155,69,0.8)]" />
-              IDENTITÉ &bull; EXCELLENCE DE RÉALISATION
+              {dict.brandClip.badge}
             </span>
           </motion.div>
 
@@ -226,8 +207,8 @@ export function BrandClipSection({ className }: BrandClipSectionProps) {
             transition={{ ...transitionSmooth, delay: 0.08 }}
             className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#F8FAFC] leading-[1.15]"
           >
-            L&apos;art de l&apos;ingénierie,{' '}
-            <span className="text-[#C59B45]">la rigueur de l&apos;exécution.</span>
+            {dict.brandClip.titlePrefix}
+            <span className="text-[#C59B45]">{dict.brandClip.titleHighlight}</span>
           </motion.h2>
 
           <motion.p
@@ -237,7 +218,7 @@ export function BrandClipSection({ className }: BrandClipSectionProps) {
             transition={{ ...transitionSmooth, delay: 0.16 }}
             className="font-sans text-sm sm:text-base text-[#9CA6B8] leading-relaxed font-light max-w-2xl mx-auto"
           >
-            Une présence technologique affirmée au croisement du développement sur-mesure, de la qualification des flux critiques et de l&apos;édition logicielle d&apos;entreprise.
+            {dict.brandClip.description}
           </motion.p>
         </div>
 
@@ -265,11 +246,11 @@ export function BrandClipSection({ className }: BrandClipSectionProps) {
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#1D68F2] shadow-[0_0_8px_rgba(29,104,242,0.8)]" />
                 <span className="font-mono text-[11px] uppercase tracking-wider text-[#CAD0DB]">
-                  {brandConfig.name} &bull; Vitrine Officielle
+                  {dict.brandClip.tagHeader}
                 </span>
               </div>
               <span className="font-mono text-[10px] uppercase tracking-widest text-[#758195] hidden sm:inline-block">
-                Master 416&times;368 &bull; 24 FPS
+                {dict.brandClip.resolutionTag}
               </span>
             </div>
 
@@ -281,7 +262,7 @@ export function BrandClipSection({ className }: BrandClipSectionProps) {
                 'border border-white/[0.06] cursor-pointer select-none'
               )}
               role="region"
-              aria-label="Zone de visionnage vidéo"
+              aria-label={dict.brandClip.ariaRegion}
             >
               {/* Native Video Element */}
               <video
@@ -293,7 +274,7 @@ export function BrandClipSection({ className }: BrandClipSectionProps) {
                 loop
                 playsInline
                 preload="metadata"
-                aria-label="Clip promotionnel officiel de RÉVA Consulting illustrant l'emblème architectural en marbre et or avec éclairage LED dynamique."
+                aria-label={dict.brandClip.ariaVideo}
                 className="size-full object-cover select-none"
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
@@ -311,11 +292,11 @@ export function BrandClipSection({ className }: BrandClipSectionProps) {
                       e.stopPropagation();
                       handleTogglePlay();
                     }}
-                    aria-label="Lancer la lecture de la vidéo"
+                    aria-label={dict.brandClip.playAria}
                     className="relative group/btn flex items-center justify-center size-16 sm:size-20 rounded-full bg-[#0E1118]/90 hover:bg-[#141822] border border-[#C59B45]/50 hover:border-[#C59B45] text-[#DFC489] hover:text-[#F8FAFC] shadow-[0_8px_32px_rgba(197,155,69,0.3)] transition-all duration-200 transform group-hover/btn:scale-105 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45]"
                   >
-                    <Play className="size-6 sm:size-8 fill-current ml-1" />
-                    <span className="sr-only">Lire la vidéo</span>
+                    <Play className="size-6 sm:size-8 fill-current ml-1 rtl:ml-0 rtl:mr-1 rtl:rotate-180" />
+                    <span className="sr-only">{dict.brandClip.playText}</span>
                   </button>
                 </div>
               )}
@@ -335,18 +316,18 @@ export function BrandClipSection({ className }: BrandClipSectionProps) {
                 <button
                   type="button"
                   onClick={handleTogglePlay}
-                  aria-label={isPlaying ? 'Mettre en pause' : 'Reprendre la lecture'}
+                  aria-label={isPlaying ? dict.brandClip.pauseAria : dict.brandClip.resumeAria}
                   className="inline-flex items-center gap-2 text-xs font-mono font-medium text-[#CAD0DB] hover:text-[#F8FAFC] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45] rounded-[4px] px-1.5 py-0.5 cursor-pointer"
                 >
                   {isPlaying ? (
                     <>
                       <Pause className="size-4 text-[#C59B45]" />
-                      <span className="hidden sm:inline">PAUSE</span>
+                      <span className="hidden sm:inline">{dict.brandClip.pauseText}</span>
                     </>
                   ) : (
                     <>
-                      <Play className="size-4 text-[#C59B45] fill-current" />
-                      <span className="hidden sm:inline">LECTURE</span>
+                      <Play className="size-4 text-[#C59B45] fill-current rtl:rotate-180" />
+                      <span className="hidden sm:inline">{dict.brandClip.playText}</span>
                     </>
                   )}
                 </button>
@@ -354,7 +335,7 @@ export function BrandClipSection({ className }: BrandClipSectionProps) {
                 {/* Center: Brand Sub-indicator */}
                 <div className="flex items-center gap-1.5 text-[11px] font-mono text-[#9CA6B8]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#C59B45] animate-pulse" />
-                  <span className="tracking-wider uppercase">Clip Institutionnel</span>
+                  <span className="tracking-wider uppercase">{dict.brandClip.subIndicator}</span>
                 </div>
 
                 {/* Right: Sound & Fullscreen controls */}
@@ -363,8 +344,8 @@ export function BrandClipSection({ className }: BrandClipSectionProps) {
                   <button
                     type="button"
                     onClick={handleToggleMute}
-                    aria-label={isMuted ? 'Activer le son' : 'Couper le son'}
-                    title={isMuted ? 'Activer le son' : 'Couper le son'}
+                    aria-label={isMuted ? dict.brandClip.unmuteAria : dict.brandClip.muteAria}
+                    title={isMuted ? dict.brandClip.unmuteAria : dict.brandClip.muteAria}
                     className="p-1.5 rounded-full text-[#CAD0DB] hover:text-[#F8FAFC] hover:bg-white/[0.08] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45] cursor-pointer"
                   >
                     {isMuted ? (
@@ -378,8 +359,8 @@ export function BrandClipSection({ className }: BrandClipSectionProps) {
                   <button
                     type="button"
                     onClick={handleToggleFullscreen}
-                    aria-label={isFullscreen ? 'Quitter le mode plein écran' : 'Passer en plein écran'}
-                    title={isFullscreen ? 'Quitter le mode plein écran' : 'Passer en plein écran'}
+                    aria-label={isFullscreen ? dict.brandClip.exitFullscreenAria : dict.brandClip.fullscreenAria}
+                    title={isFullscreen ? dict.brandClip.exitFullscreenAria : dict.brandClip.fullscreenAria}
                     className="p-1.5 rounded-full text-[#CAD0DB] hover:text-[#F8FAFC] hover:bg-white/[0.08] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45] cursor-pointer"
                   >
                     {isFullscreen ? (

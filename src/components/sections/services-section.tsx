@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
+import { getDictionary } from '@/lib/i18n/dictionaries';
 
 interface ServicesSectionProps {
   /** Optional active locale segment */
@@ -16,55 +17,12 @@ interface ServicesSectionProps {
   className?: string;
 }
 
-interface PillarData {
-  readonly number: string;
-  readonly title: string;
-  readonly summary: string;
-  readonly scope: readonly string[];
-}
-
 export function ServicesSection({ locale = 'fr', className }: ServicesSectionProps) {
   const shouldReduceMotion = useReducedMotion();
+  const dict = getDictionary(locale);
 
   // 3 consolidated, authoritative engineering pillars
-  const pillars: readonly PillarData[] = [
-    {
-      number: '01',
-      title: 'Logiciels Métier & Architectures Sur-Mesure',
-      summary:
-        'Conception et développement de solutions d’entreprise adaptées à vos spécificités opérationnelles : plateformes web complexes, applications mobiles de terrain et intégration de l’ERP souverain Élancé.',
-      scope: [
-        'Logiciels d’entreprise et portails métier',
-        'Applications web & mobiles résilientes',
-        'Déploiement et personnalisation d’Élancé ERP',
-        'Digitalisation et automatisation des flux opérationnels',
-      ],
-    },
-    {
-      number: '02',
-      title: 'Assurance Qualité & Ingénierie du Test',
-      summary:
-        'Discipline d’ingénierie dédiée à la fiabilité logicielle : qualification continue, validation de conformité fonctionnelle et mise en place de frameworks d’automatisation des tests.',
-      scope: [
-        'Plans de test fonctionnels et techniques',
-        'Automatisation des tests E2E et validation d’API',
-        'Contrôle systématique de non-régression (CI/CD)',
-        'Audits de robustesse et tests de performance',
-      ],
-    },
-    {
-      number: '03',
-      title: 'Intégration de Systèmes & Évolution Continue (TMA)',
-      summary:
-        'Garantie de continuité et interopérabilité de votre écosystème : interconnexion d’outils historiques, maintenance applicative préventive et accompagnement technique dans la durée.',
-      scope: [
-        'Interopérabilité de progiciels et flux de données sécurisés',
-        'Tierce Maintenance Applicative (TMA) préventive et corrective',
-        'Modernisation progressive des systèmes hérités',
-        'Support technique dédié et gouvernance logicielle',
-      ],
-    },
-  ];
+  const pillars = dict.services.pillars;
 
   const transitionFast = { duration: 0.5, ease: [0.16, 1, 0.3, 1] };
 
@@ -88,7 +46,7 @@ export function ServicesSection({ locale = 'fr', className }: ServicesSectionPro
             transition={transitionFast}
           >
             <span className="text-xs font-mono font-semibold tracking-[0.2em] uppercase text-[#DFC489]">
-              EXPERTISES
+              {dict.services.badge}
             </span>
           </motion.div>
 
@@ -99,7 +57,7 @@ export function ServicesSection({ locale = 'fr', className }: ServicesSectionPro
             transition={{ ...transitionFast, delay: 0.08 }}
             className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#F8FAFC]"
           >
-            Nos domaines d&apos;intervention
+            {dict.services.title}
           </motion.h2>
 
           <motion.p
@@ -109,7 +67,7 @@ export function ServicesSection({ locale = 'fr', className }: ServicesSectionPro
             transition={{ ...transitionFast, delay: 0.14 }}
             className="text-lg sm:text-xl text-[#9CA6B8] font-light leading-relaxed"
           >
-            Une ingénierie rigoureuse pour concevoir, éprouver et pérenniser les systèmes informatiques de l&apos;entreprise.
+            {dict.services.subtitle}
           </motion.p>
         </div>
 
@@ -143,7 +101,7 @@ export function ServicesSection({ locale = 'fr', className }: ServicesSectionPro
                 {/* Scope list */}
                 <div className="pt-4 border-t border-white/[0.06] space-y-2.5">
                   <span className="text-[11px] font-mono uppercase tracking-wider text-[#758195] block">
-                    Périmètre d&apos;intervention
+                    {dict.services.scopeLabel}
                   </span>
                   <ul className="space-y-2 text-xs sm:text-sm text-[#CAD0DB] font-light">
                     {pillar.scope.map((item) => (
@@ -161,8 +119,8 @@ export function ServicesSection({ locale = 'fr', className }: ServicesSectionPro
                   href={`/${locale}#contact`}
                   className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-[#DFC489] hover:text-[#F6F0DB] transition-colors"
                 >
-                  <span>Nous consulter</span>
-                  <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+                  <span>{dict.services.consultUs}</span>
+                  <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5" />
                 </Link>
               </div>
             </motion.article>

@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
+import { getDictionary } from '@/lib/i18n/dictionaries';
 
 interface HeroSectionProps {
   /** Current locale segment */
@@ -21,6 +22,7 @@ interface HeroSectionProps {
 export function HeroSection({ locale = 'fr', className }: HeroSectionProps) {
   const shouldReduceMotion = useReducedMotion();
   const transitionFast = { duration: 0.45, ease: [0.16, 1, 0.3, 1] };
+  const dict = getDictionary(locale);
 
   return (
     <section
@@ -43,21 +45,21 @@ export function HeroSection({ locale = 'fr', className }: HeroSectionProps) {
           priority
           className={cn(
             'object-cover',
-            // Desktop: emblem pushed right so it shines in the negative space beside the headline
-            'lg:object-[86%_center] lg:opacity-80',
+            // Desktop: emblem pushed right (or left in RTL) so it shines in the negative space beside the headline
+            'lg:object-[86%_center] rtl:lg:object-[14%_center] lg:opacity-80',
             // Mobile & Tablet: calibrated opacity keeps the emblem perceptible while text stays readable
-            'object-[65%_35%] opacity-45 sm:opacity-55'
+            'object-[65%_35%] rtl:object-[35%_35%] opacity-45 sm:opacity-55'
           )}
         />
 
         {/* Desktop readability overlay: deep black on the text side fading to transparent over the emblem */}
-        <div className="absolute inset-0 hidden lg:block bg-gradient-to-r from-[#08090C] via-[#08090C]/85 via-45% to-transparent" />
+        <div className="absolute inset-0 hidden lg:block bg-gradient-to-r rtl:bg-gradient-to-l from-[#08090C] via-[#08090C]/85 via-45% to-transparent" />
 
         {/* Mobile/Tablet readability overlay: balanced vertical dark wash */}
         <div className="absolute inset-0 lg:hidden bg-gradient-to-b from-[#08090C]/85 via-[#08090C]/75 to-[#08090C]/90" />
 
         {/* Subtle warm gold & electric blue ambient glow over the emblem zone (keeps brand atmosphere) */}
-        <div className="absolute top-1/2 right-[2%] lg:right-[8%] -translate-y-1/2 w-[550px] sm:w-[680px] lg:w-[840px] h-[550px] sm:h-[680px] lg:h-[840px] bg-[radial-gradient(ellipse_at_center,_rgba(223,196,137,0.10)_0%,_rgba(29,104,242,0.10)_36%,_rgba(8,9,12,0)_72%)] blur-3xl" />
+        <div className="absolute top-1/2 right-[2%] lg:right-[8%] rtl:right-auto rtl:left-[2%] rtl:lg:left-[8%] -translate-y-1/2 w-[550px] sm:w-[680px] lg:w-[840px] h-[550px] sm:h-[680px] lg:h-[840px] bg-[radial-gradient(ellipse_at_center,_rgba(223,196,137,0.10)_0%,_rgba(29,104,242,0.10)_36%,_rgba(8,9,12,0)_72%)] blur-3xl" />
 
         {/* Subtle architectural coordinate grid */}
         <div
@@ -77,7 +79,7 @@ export function HeroSection({ locale = 'fr', className }: HeroSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-12 items-center">
           
           {/* LEFT COLUMN: Editorial & Strategic Value Proposition (Lg: 7 cols) */}
-          <div className="lg:col-span-7 flex flex-col justify-center space-y-6 sm:space-y-8 text-left">
+          <div className="lg:col-span-7 flex flex-col justify-center space-y-6 sm:space-y-8 text-start">
             
             {/* Clean, confident brand identifier */}
             <motion.div
@@ -87,7 +89,7 @@ export function HeroSection({ locale = 'fr', className }: HeroSectionProps) {
             >
               <span className="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-[0.2em] uppercase text-[#DFC489]">
                 <span className="w-2 h-2 rounded-full bg-[#C59B45] shadow-[0_0_8px_rgba(197,155,69,0.8)]" />
-                RÉVA CONSULTING
+                {dict.hero.brandTag}
               </span>
             </motion.div>
 
@@ -99,7 +101,7 @@ export function HeroSection({ locale = 'fr', className }: HeroSectionProps) {
               className="space-y-2"
             >
               <h1 className="font-display text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-[#F8FAFC] leading-[1.12]">
-                Ingénierie logicielle &amp; qualification des systèmes critiques.
+                {dict.hero.title}
               </h1>
             </motion.div>
 
@@ -110,7 +112,7 @@ export function HeroSection({ locale = 'fr', className }: HeroSectionProps) {
               transition={{ ...transitionFast, delay: 0.18 }}
               className="text-base sm:text-lg text-[#9CA6B8] leading-relaxed max-w-2xl font-light"
             >
-              Société de développement logiciel et éditeur d&apos;Élancé ERP. RÉVA accompagne les entreprises exigeantes dans la conception d&apos;applications sur-mesure et l&apos;assurance qualité de leurs plateformes opérationnelles.
+              {dict.hero.description}
             </motion.p>
 
             {/* CTAs: Primary & Secondary */}
@@ -125,8 +127,8 @@ export function HeroSection({ locale = 'fr', className }: HeroSectionProps) {
                 href={`/${locale}#contact`}
                 className="group inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#08090C] bg-[#C59B45] hover:bg-[#D4B066] active:bg-[#AA8132] rounded-[10px] transition-all duration-200 shadow-[0_2px_14px_rgba(197,155,69,0.25)] hover:shadow-[0_4px_20px_rgba(197,155,69,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090C] focus-visible:ring-[#C59B45] select-none cursor-pointer"
               >
-                <span>Échanger sur votre projet</span>
-                <ArrowRight className="size-4 shrink-0 transition-transform duration-200 group-hover:translate-x-1" />
+                <span>{dict.hero.primaryCta}</span>
+                <ArrowRight className="size-4 shrink-0 transition-transform duration-200 group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" />
               </Link>
 
               {/* Secondary CTA */}
@@ -134,7 +136,7 @@ export function HeroSection({ locale = 'fr', className }: HeroSectionProps) {
                 href={`/${locale}#services`}
                 className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 text-xs sm:text-sm font-medium tracking-wide text-[#CAD0DB] bg-[#111318]/90 hover:bg-[#171A20] hover:text-[#F8FAFC] border border-white/[0.08] hover:border-white/[0.18] rounded-[10px] transition-all duration-200 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090C] focus-visible:ring-slate-400 select-none cursor-pointer"
               >
-                <span>Découvrir nos activités</span>
+                <span>{dict.hero.secondaryCta}</span>
               </Link>
             </motion.div>
 

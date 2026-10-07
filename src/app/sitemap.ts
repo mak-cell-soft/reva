@@ -32,5 +32,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     },
+    {
+      url: `${baseUrl}/ar`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          fr: `${baseUrl}/fr`,
+          en: `${baseUrl}/en`,
+          ar: `${baseUrl}/ar`,
+        },
+      },
+    },
   ];
 }

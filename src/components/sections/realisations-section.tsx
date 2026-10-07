@@ -8,6 +8,8 @@ import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { ArrowUpRight } from 'lucide-react';
+import { getDictionary } from '@/lib/i18n/dictionaries';
+import type { Locale } from '@/lib/i18n/config';
 
 interface RealisationsSectionProps {
   /** Optional active locale segment */
@@ -16,48 +18,40 @@ interface RealisationsSectionProps {
   className?: string;
 }
 
-interface ProjectData {
-  readonly id: string;
-  readonly name: string;
-  readonly category: string;
-  readonly description: string;
-  readonly image: string;
-  readonly url: string;
-  readonly accent: 'gold' | 'silver';
-}
+const PROJECT_METADATA = [
+  {
+    id: 'socofeb-decor',
+    image: '/images/realisations/socofeb-decor.jpg',
+    url: 'https://socofeb-decor.com/',
+    accent: 'gold' as const,
+  },
+  {
+    id: 'luxaven',
+    image: '/images/realisations/luxaven.jpg',
+    url: 'https://luxaven.art/',
+    accent: 'silver' as const,
+  },
+];
 
-export function RealisationsSection({ className }: RealisationsSectionProps) {
+export function RealisationsSection({ locale = 'fr', className }: RealisationsSectionProps) {
   const shouldReduceMotion = useReducedMotion();
   const transitionSmooth = { duration: 0.5, ease: [0.16, 1, 0.3, 1] };
+  const dict = getDictionary(locale as Locale);
+  const t = dict.realisations;
 
-  // Authentic RÉVA projects
-  const projects: readonly ProjectData[] = [
-    {
-      id: 'socofeb-decor',
-      name: 'SOCOFEB DÉCOR',
-      category: 'Plateforme Web & Catalogue Digital Métier',
-      description:
-        'Conception et développement de la plateforme web de SOCOFEB Décor, valorisant l’ensemble des collections de panneaux décoratifs et matériaux d’agencement intérieur à travers un catalogue digital fluide et immersif.',
-      image: '/images/realisations/socofeb-decor.jpg',
-      url: 'https://socofeb-decor.com/',
-      accent: 'gold',
-    },
-    {
-      id: 'luxaven',
-      name: 'LUXAVEN',
-      category: 'Plateforme Numérique & Vitrine Architecturale',
-      description:
-        'Développement d’une vitrine numérique d’exception pour le studio LUXAVEN, mettant en scène des objets d’art et pièces de mobilier architectural dans un écrin digital minimaliste et raffiné.',
-      image: '/images/realisations/luxaven.jpg',
-      url: 'https://luxaven.art/',
-      accent: 'silver',
-    },
-  ];
+  // Combine static media metadata with localized project copy
+  const projects = t.projects.map((proj) => {
+    const meta = PROJECT_METADATA.find((m) => m.id === proj.id) ?? PROJECT_METADATA[0];
+    return {
+      ...proj,
+      ...meta,
+    };
+  });
 
   return (
     <section
       id="realisations"
-      aria-label="Réalisations RÉVA Consulting"
+      aria-label={t.badge}
       className={cn(
         'relative bg-[#08090C] py-24 sm:py-32 lg:py-40 border-t border-white/[0.06] overflow-hidden',
         className
@@ -87,7 +81,7 @@ export function RealisationsSection({ className }: RealisationsSectionProps) {
             transition={transitionSmooth}
           >
             <span className="text-xs font-mono font-semibold tracking-[0.2em] uppercase text-[#DFC489]">
-              RÉALISATIONS
+              {t.badge}
             </span>
           </motion.div>
 
@@ -98,8 +92,8 @@ export function RealisationsSection({ className }: RealisationsSectionProps) {
             transition={{ ...transitionSmooth, delay: 0.08 }}
             className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#F8FAFC]"
           >
-            Des projets concrets,{' '}
-            <span className="text-[#C59B45]">des solutions pensées pour durer.</span>
+            {t.titlePrefix}
+            <span className="text-[#C59B45]">{t.titleHighlight}</span>
           </motion.h2>
 
           <motion.p
@@ -109,7 +103,7 @@ export function RealisationsSection({ className }: RealisationsSectionProps) {
             transition={{ ...transitionSmooth, delay: 0.16 }}
             className="font-sans text-base sm:text-lg text-[#9CA6B8] max-w-3xl leading-relaxed font-light"
           >
-            Chaque réalisation traduit notre exigence de qualité, d’ergonomie et de robustesse technique au service de l’activité de nos clients.
+            {t.description}
           </motion.p>
         </div>
 
@@ -147,7 +141,7 @@ export function RealisationsSection({ className }: RealisationsSectionProps) {
                     >
                       <Image
                         src={project.image}
-                        alt={`${project.name} — Présentation du projet`}
+                        alt={t.previewAlt(project.name)}
                         fill
                         sizes="(max-width: 1024px) 100vw, 58vw"
                         className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
@@ -178,15 +172,15 @@ export function RealisationsSection({ className }: RealisationsSectionProps) {
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label={`Découvrir le site de ${project.name} (ouvre dans un nouvel onglet)`}
+                        aria-label={t.discoverSiteAria(project.name)}
                         className={cn(
                           'inline-flex items-center gap-2 px-6 py-3 rounded-[10px] text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer',
                           'text-[#F8FAFC] bg-[#141822] hover:bg-[#1A202E] border border-white/[0.1] hover:border-white/[0.25]',
                           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45]'
                         )}
                       >
-                        <span>Découvrir le site</span>
-                        <ArrowUpRight className="size-4 text-[#C59B45] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        <span>{t.discoverSite}</span>
+                        <ArrowUpRight className="size-4 text-[#C59B45] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 rtl:-scale-x-100" />
                       </a>
                     </div>
                   </div>
