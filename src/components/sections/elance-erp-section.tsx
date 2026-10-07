@@ -50,7 +50,8 @@ export function ElanceErpSection({ className }: ElanceSectionProps) {
       id="elance-erp"
       aria-label="Élancé ERP — Solution développée par RÉVA Consulting"
       className={cn(
-        'relative bg-[#07080B] py-24 sm:py-32 lg:py-40 border-t border-white/[0.08] overflow-hidden',
+        // NOTE: Padding tightened (was py-24/32/40) since this is now the 2nd chapter, directly under the Hero.
+        'relative bg-[#07080B] py-20 sm:py-24 lg:py-32 border-t border-white/[0.08] overflow-hidden',
         className
       )}
     >
@@ -80,23 +81,34 @@ export function ElanceErpSection({ className }: ElanceSectionProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ ...transitionFast, delay: 0.08 }}
-              className="space-y-4"
+              className="space-y-5 sm:space-y-6"
             >
-              <div className="flex items-center gap-4">
-                <div className="size-14 rounded-[14px] bg-[#0E131E] border border-[#3B82F6]/30 p-2.5 shrink-0 flex items-center justify-center">
-                  <Image
-                    src="/images/logos/logo-elance.svg"
-                    alt="Logo officiel Élancé ERP"
-                    width={48}
-                    height={48}
-                    className="size-full object-contain"
+              {/* Flagship identity lockup.
+                  NOTE: Logo container enlarged ~2× (size-14 → size-28 on sm+) so Élancé reads instantly
+                  as RÉVA's flagship product. Mobile uses size-20 to avoid excessive vertical space.
+                  The official SVG asset is reused as-is (object-contain = no distortion). */}
+              <div className="flex items-center gap-5 sm:gap-6">
+                <div className="relative shrink-0">
+                  {/* Soft blue halo behind the mark — adds presence without competing with the Hero */}
+                  <div
+                    className="absolute -inset-4 rounded-full bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.28)_0%,_transparent_70%)] blur-xl pointer-events-none"
+                    aria-hidden="true"
                   />
+                  <div className="relative size-20 sm:size-28 rounded-[18px] sm:rounded-[24px] bg-[#0E131E] border border-[#3B82F6]/30 p-3.5 sm:p-5 flex items-center justify-center shadow-[0_8px_32px_rgba(29,78,216,0.18)]">
+                    <Image
+                      src="/images/logos/logo-elance.svg"
+                      alt="Logo officiel Élancé ERP"
+                      width={96}
+                      height={96}
+                      className="size-full object-contain"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-[#F8FAFC]">
+                <div className="min-w-0">
+                  <h2 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight text-[#F8FAFC] leading-none">
                     Élancé <span className="text-[#3B82F6]">ERP</span>
                   </h2>
-                  <p className="text-xs font-mono text-[#758195] tracking-wider uppercase mt-0.5">
+                  <p className="text-[11px] sm:text-xs font-mono text-[#758195] tracking-wider uppercase mt-2 sm:mt-3">
                     Développé et commercialisé par RÉVA Consulting
                   </p>
                 </div>
