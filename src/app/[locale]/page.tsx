@@ -3,6 +3,7 @@
 // and high-performance server rendering with zero unneeded client overhead.
 import * as React from 'react';
 import { HeroSection } from '@/components/sections/hero-section';
+import { BrandClipSection } from '@/components/sections/brand-clip-section';
 import { PositioningSection } from '@/components/sections/positioning-section';
 import { ServicesSection } from '@/components/sections/services-section';
 import { ElanceErpSection } from '@/components/sections/elance-erp-section';
@@ -27,8 +28,10 @@ export default async function HomePage({ params }: PageProps) {
       {/* 1. Official Homepage Hero Section */}
       <HeroSection locale={locale} />
 
-      {/* 2. Flagship Product Section: Élancé ERP (Proprietary solution developed by RÉVA Consulting).
-          NOTE: Intentionally placed directly under the Hero — RÉVA (engineering company) → Élancé (flagship product). */}
+      {/* 2. Visual Storytelling & Brand Identity Clip: Executive cinematic showcase (reva-clip.mp4) */}
+      <BrandClipSection locale={locale} />
+
+      {/* 3. Flagship Product Section: Élancé ERP (Proprietary solution developed by RÉVA Consulting). */}
       <ElanceErpSection locale={locale} />
 
       {/* 3. Positioning Section: De l'idée à la solution. De la solution à la qualité. */}
