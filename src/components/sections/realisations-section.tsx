@@ -1,5 +1,5 @@
 // NOTE: RÉVA Consulting "Réalisations" Section.
-// Features authentic production projects: SOCOFEB Décor and Luxaven.
+// Features authentic production projects: SOCOFEB Décor, Luxaven, and Mansour Construction.
 // Editorial, high-end presentation with large imagery, clean typography, and zero badge clutter.
 'use client';
 
@@ -30,6 +30,12 @@ const PROJECT_METADATA = [
     image: '/images/realisations/luxaven.jpg',
     url: 'https://luxaven.art/',
     accent: 'silver' as const,
+  },
+  {
+    id: 'mansour-construction',
+    image: '/images/realisations/mansour-construction.jpg',
+    url: 'https://www.mansour-construction.tn/',
+    accent: 'gold' as const,
   },
 ];
 

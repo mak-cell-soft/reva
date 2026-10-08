@@ -64,11 +64,11 @@ export function Footer({ locale = 'fr', className }: FooterProps) {
               <Link
                 href={`/${locale}`}
                 className="inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45] rounded-[6px]"
-                aria-label={`${brandConfig.name} — Accueil`}
+                aria-label={dict.brand.fullName}
               >
                 <Image
                   src="/images/logos/logo-reva-navbar.png"
-                  alt={brandConfig.name}
+                  alt={dict.brand.fullName}
                   width={2103}
                   height={748}
                   className="h-10 sm:h-11 w-auto object-contain"

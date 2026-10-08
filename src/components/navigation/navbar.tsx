@@ -9,7 +9,6 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { brandConfig } from '@/lib/brand.config';
 import { getDictionary } from '@/lib/i18n/dictionaries';
 import { LOCALES } from '@/lib/i18n/config';
 
@@ -189,11 +188,11 @@ export function Navbar({ locale = 'fr' }: NavbarProps) {
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Left: Dedicated RÉVA Navbar Brand Logo */}
+          {/* Left: Dedicated Navbar Brand Logo & Localized Identity */}
           <Link
             href={`/${locale}`}
-            className="group relative flex items-center self-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45]/80 shrink-0 select-none py-1 transition-transform duration-200 hover:scale-[1.01]"
-            aria-label={`${brandConfig.name} — ${dict.nav.cabinet}`}
+            className="group relative flex items-center gap-3.5 self-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45]/80 shrink-0 select-none py-1 transition-transform duration-200 hover:scale-[1.01]"
+            aria-label={dict.brand.fullName}
           >
             {/* Very subtle localized soft glow behind navbar logo for enhanced contrast */}
             <div
@@ -202,12 +201,19 @@ export function Navbar({ locale = 'fr' }: NavbarProps) {
             />
             <Image
               src="/images/logos/logo-reva-navbar.png"
-              alt={brandConfig.name}
+              alt={dict.brand.fullName}
               width={2103}
               height={748}
-              className="relative h-[44px] sm:h-[48px] lg:h-[54px] xl:h-[58px] w-auto object-contain drop-shadow-[0_2px_12px_rgba(29,104,242,0.22)] brightness-[1.12] contrast-[1.10] transition-all duration-300"
+              className="relative h-[38px] sm:h-[42px] lg:h-[46px] w-auto object-contain drop-shadow-[0_2px_12px_rgba(29,104,242,0.22)] brightness-[1.12] contrast-[1.10] transition-all duration-300"
               priority
             />
+
+            {/* Approved Localized Brand Identity Tagline */}
+            <div className="hidden xl:flex items-center border-l rtl:border-l-0 rtl:border-r border-white/10 pl-3.5 rtl:pl-0 rtl:pr-3.5">
+              <span className="text-[12px] font-medium text-[#DFC489] tracking-wide whitespace-nowrap">
+                {dict.brand.fullName}
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation Links */}
@@ -334,22 +340,27 @@ export function Navbar({ locale = 'fr' }: NavbarProps) {
             >
               <div className="bg-[#111318] border border-white/[0.08] rounded-[16px] shadow-[0_16px_40px_rgba(0,0,0,0.85)] p-5 space-y-4 max-w-md mx-auto">
                 {/* Mobile Drawer Brand Anchor & Language Switcher */}
-                <div className="flex items-center justify-between pb-3 border-b border-white/[0.06]">
-                  <Link
-                    href={`/${locale}`}
-                    onClick={handleNavClick}
-                    className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45]/80 select-none"
-                    aria-label={`${brandConfig.name} — Accueil`}
-                  >
-                    <Image
-                      src="/images/logos/logo-reva-navbar.png"
-                      alt={brandConfig.name}
-                      width={2103}
-                      height={748}
-                      className="h-[38px] sm:h-[44px] w-auto object-contain drop-shadow-[0_2px_10px_rgba(29,104,242,0.22)] brightness-[1.12] contrast-[1.10]"
-                    />
-                  </Link>
-                  <LanguageSwitcher currentLocale={locale} />
+                <div className="flex flex-col gap-2 pb-3 border-b border-white/[0.06]">
+                  <div className="flex items-center justify-between">
+                    <Link
+                      href={`/${locale}`}
+                      onClick={handleNavClick}
+                      className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B45]/80 select-none"
+                      aria-label={dict.brand.fullName}
+                    >
+                      <Image
+                        src="/images/logos/logo-reva-navbar.png"
+                        alt={dict.brand.fullName}
+                        width={2103}
+                        height={748}
+                        className="h-[36px] sm:h-[40px] w-auto object-contain drop-shadow-[0_2px_10px_rgba(29,104,242,0.22)] brightness-[1.12] contrast-[1.10]"
+                      />
+                    </Link>
+                    <LanguageSwitcher currentLocale={locale} />
+                  </div>
+                  <span className="text-xs font-semibold text-[#DFC489] tracking-wide">
+                    {dict.brand.fullName}
+                  </span>
                 </div>
 
                 {/* Nav Links List */}

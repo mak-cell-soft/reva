@@ -48,14 +48,14 @@ export function CtaSection({ locale = 'fr', className }: CtaSectionProps) {
             <div className="relative h-6 w-auto aspect-[1599/1076] overflow-hidden rounded-[4px] shrink-0">
               <Image
                 src="/images/logos/logo-reva.jpeg"
-                alt={brandConfig.name}
+                alt={dict.brand.fullName}
                 width={1599}
                 height={1076}
                 className="h-full w-auto object-contain"
               />
             </div>
             <span className="text-xs font-mono font-semibold tracking-[0.2em] uppercase text-[#DFC489]">
-              {brandConfig.name.toUpperCase()}
+              {dict.brand.fullName}
             </span>
           </div>
 

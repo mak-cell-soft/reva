@@ -22,11 +22,16 @@ export const fr = {
     realisations: 'Réalisations',
     contact: 'Contact',
   },
+  brand: {
+    name: 'RéVA',
+    tagline: 'Réaliser Votre Ambition',
+    fullName: 'RéVA — Réaliser Votre Ambition',
+  },
   hero: {
-    brandTag: 'RÉVA CONSULTING',
+    brandTag: 'RéVA — Réaliser Votre Ambition',
     title: 'Ingénierie logicielle & qualification des systèmes critiques.',
     description:
-      'Société de développement logiciel et éditeur d’Élancé ERP. RÉVA accompagne les entreprises exigeantes dans la conception d’applications sur-mesure et l’assurance qualité de leurs plateformes opérationnelles.',
+      'Société de développement logiciel et éditeur d’Élancé ERP. RéVA accompagne les entreprises exigeantes dans la conception d’applications sur-mesure et l’assurance qualité de leurs plateformes opérationnelles.',
     primaryCta: 'Échanger sur votre projet',
     secondaryCta: 'Découvrir nos activités',
   },
@@ -36,12 +41,12 @@ export const fr = {
     titleHighlight: 'la rigueur de l’exécution.',
     description:
       'Une présence technologique affirmée au croisement du développement sur-mesure, de la qualification des flux critiques et de l’édition logicielle d’entreprise.',
-    tagHeader: 'RÉVA CONSULTING • Vitrine Officielle',
+    tagHeader: 'RéVA — Réaliser Votre Ambition • Vitrine Officielle',
     resolutionTag: 'Master 416×368 • 24 FPS',
     subIndicator: 'Clip Institutionnel',
     ariaRegion: 'Zone de visionnage vidéo',
     ariaVideo:
-      'Clip promotionnel officiel de RÉVA Consulting illustrant l’emblème architectural de la marque.',
+      'Clip promotionnel officiel de RéVA — Réaliser Votre Ambition illustrant l’emblème architectural de la marque.',
     playAria: 'Lancer la lecture de la vidéo',
     pauseAria: 'Mettre en pause',
     resumeAria: 'Reprendre la lecture',
@@ -269,9 +274,9 @@ export const fr = {
     titleHighlight: 'des solutions pensées pour durer.',
     description:
       'Chaque réalisation traduit notre exigence de qualité, d’ergonomie et de robustesse technique au service de l’activité de nos clients.',
-    discoverSite: 'Découvrir le site',
+    discoverSite: 'Visiter le site',
     discoverSiteAria: (name: string) =>
-      `Découvrir le site de ${name} (ouvre dans un nouvel onglet)`,
+      `Visiter le site de ${name} (ouvre dans un nouvel onglet)`,
     previewAlt: (name: string) => `${name} — Présentation du projet`,
     projects: [
       {
@@ -288,6 +293,13 @@ export const fr = {
         description:
           'Développement d’une vitrine numérique d’exception pour le studio LUXAVEN, mettant en scène des objets d’art et pièces de mobilier architectural dans un écrin digital minimaliste et raffiné.',
       },
+      {
+        id: 'mansour-construction',
+        name: 'MANSOUR CONSTRUCTION',
+        category: 'Construction & Bâtiment',
+        description:
+          'Site web vitrine pour Mansour Construction, entreprise générale de bâtiment spécialisée dans la construction clé en main, les villas haut de gamme, les projets résidentiels et les espaces professionnels.',
+      },
     ],
   },
   cta: {
@@ -296,16 +308,16 @@ export const fr = {
       'Échangeons sur vos enjeux opérationnels et vos exigences techniques. Nos consultants et ingénieurs analysent vos besoins pour définir une réponse adaptée et pérenne.',
     buttonText: 'Échanger avec notre équipe',
     directChannel: 'Canal direct :',
-    signature: 'RÉVA Consulting • Développer. Tester. Optimiser.',
+    signature: 'RéVA — Réaliser Votre Ambition • Développer. Tester. Optimiser.',
   },
   footer: {
-    tagline: 'RéVA – Consulting : Réaliser Votre Ambition Consulting',
+    tagline: 'RéVA — Réaliser Votre Ambition',
     description:
-      'Éditeur de solutions logicielles et cabinet d’ingénierie du test informatique. Nous accompagnons les organisations dans la conception, la fiabilisation et le pilotage de leurs systèmes critiques.',
+      'Éditeur de solutions logicielles et cabinet d’ingénierie du test informatique. RéVA accompagne les organisations dans la conception, la fiabilisation et le pilotage de leurs systèmes critiques.',
     navTitle: 'Navigation',
     servicesTitle: 'Services',
     elanceNotice:
-      'Élancé ERP est une solution développée et commercialisée par RÉVA Consulting.',
+      'Élancé ERP est une solution développée et commercialisée par RéVA.',
     learnMoreElance: 'En savoir plus sur Élancé ERP',
     contactTitle: 'Contact',
     legalTitle: 'Mentions Légales',

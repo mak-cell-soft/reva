@@ -17,6 +17,25 @@ export const brandConfig = {
   signature: 'RÉVA Consulting — Développer. Tester. Optimiser.',
   tagline: 'Développer. Tester. Optimiser.',
 
+  // Official Approved Localized Brand Identities
+  localized: {
+    fr: {
+      name: 'RéVA',
+      tagline: 'Réaliser Votre Ambition',
+      fullName: 'RéVA — Réaliser Votre Ambition',
+    },
+    en: {
+      name: 'ACYA',
+      tagline: 'AChieve Your Ambition',
+      fullName: 'ACYA — AChieve Your Ambition',
+    },
+    ar: {
+      name: 'استشارات حقق طموحك',
+      tagline: 'حقق طموحك',
+      fullName: 'استشارات حقق طموحك',
+    },
+  },
+
   // Strategic Positioning
   positioning: {
     primary: 'Société de développement logiciel & de test informatique',
@@ -118,3 +137,9 @@ export const brandConfig = {
 } as const;
 
 export type BrandConfig = typeof brandConfig;
+
+export function getLocalizedBrand(locale: string = 'fr') {
+  if (locale === 'en') return brandConfig.localized.en;
+  if (locale === 'ar') return brandConfig.localized.ar;
+  return brandConfig.localized.fr;
+}

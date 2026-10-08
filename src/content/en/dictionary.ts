@@ -24,11 +24,16 @@ export const en: Dictionary = {
     realisations: 'Case Studies',
     contact: 'Contact',
   },
+  brand: {
+    name: 'ACYA',
+    tagline: 'AChieve Your Ambition',
+    fullName: 'ACYA — AChieve Your Ambition',
+  },
   hero: {
-    brandTag: 'RÉVA CONSULTING',
+    brandTag: 'ACYA — AChieve Your Ambition',
     title: 'Software engineering & qualification of critical systems.',
     description:
-      'Software engineering company and publisher of Élancé ERP. RÉVA supports demanding organizations in designing bespoke applications and ensuring the quality of their mission-critical platforms.',
+      'Software engineering company and publisher of Élancé ERP. ACYA supports demanding organizations in designing bespoke applications and ensuring the quality of their mission-critical platforms.',
     primaryCta: 'Discuss your project',
     secondaryCta: 'Explore our services',
   },
@@ -38,12 +43,12 @@ export const en: Dictionary = {
     titleHighlight: 'the rigor of execution.',
     description:
       'An authoritative technological presence bridging custom software development, critical workflow qualification, and enterprise software publishing.',
-    tagHeader: 'RÉVA CONSULTING • Official Showcase',
+    tagHeader: 'ACYA — AChieve Your Ambition • Official Showcase',
     resolutionTag: 'Master 416×368 • 24 FPS',
     subIndicator: 'Corporate Showcase',
     ariaRegion: 'Video viewing area',
     ariaVideo:
-      'Official promotional clip of RÉVA Consulting showcasing the architectural brand plaque with dynamic LED lighting.',
+      'Official promotional clip of ACYA — AChieve Your Ambition showcasing the architectural brand plaque with dynamic LED lighting.',
     playAria: 'Play video',
     pauseAria: 'Pause video',
     resumeAria: 'Resume playback',
@@ -271,9 +276,9 @@ export const en: Dictionary = {
     titleHighlight: 'solutions engineered to endure.',
     description:
       'Every project embodies our standard of quality, ergonomics, and technical robustness empowering our clients’ business operations.',
-    discoverSite: 'Discover the website',
+    discoverSite: 'Visit website',
     discoverSiteAria: (name: string) =>
-      `Discover the ${name} platform (opens in a new tab)`,
+      `Visit the ${name} website (opens in a new tab)`,
     previewAlt: (name: string) => `${name} — Project Showcase Preview`,
     projects: [
       {
@@ -290,6 +295,13 @@ export const en: Dictionary = {
         description:
           'Development of an architectural digital showcase for LUXAVEN studio, presenting art objects and bespoke furniture in an ultra-refined, minimalist digital environment.',
       },
+      {
+        id: 'mansour-construction',
+        name: 'MANSOUR CONSTRUCTION',
+        category: 'Construction & Building',
+        description:
+          'Showcase website for Mansour Construction, a general contracting company specialized in turnkey building, luxury villas, residential developments, and commercial spaces.',
+      },
     ],
   },
   cta: {
@@ -298,16 +310,16 @@ export const en: Dictionary = {
       'Let’s discuss your operational stakes and technical expectations. Our consultants and software engineers analyze your requirements to deliver an adapted, durable response.',
     buttonText: 'Talk with our engineering team',
     directChannel: 'Direct channel:',
-    signature: 'RÉVA Consulting • Develop. Test. Optimize.',
+    signature: 'ACYA — AChieve Your Ambition • Develop. Test. Optimize.',
   },
   footer: {
-    tagline: 'RéVA – Consulting: Realize Your Consulting Ambition',
+    tagline: 'ACYA — AChieve Your Ambition',
     description:
-      'Software publisher and IT testing engineering consultancy. We partner with organizations in designing, securing, and operating mission-critical digital systems.',
+      'Software publisher and IT testing engineering consultancy. ACYA partners with organizations in designing, securing, and operating mission-critical digital systems.',
     navTitle: 'Navigation',
     servicesTitle: 'Services',
     elanceNotice:
-      'Élancé ERP is a proprietary solution developed and commercialized by RÉVA Consulting.',
+      'Élancé ERP is a proprietary solution developed and commercialized by ACYA.',
     learnMoreElance: 'Learn more about Élancé ERP',
     contactTitle: 'Contact',
     legalTitle: 'Legal Disclosures',

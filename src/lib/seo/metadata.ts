@@ -78,24 +78,30 @@ export function buildLocalizedMetadata(locale: string): Metadata {
   const isAr = locale === 'ar';
   const baseUrl = brandConfig.url;
 
-  let titleDefault = 'RÉVA Consulting — Société de développement logiciel & de test informatique';
+  const localizedBrand = isEn
+    ? 'ACYA — AChieve Your Ambition'
+    : isAr
+      ? 'استشارات حقق طموحك'
+      : 'RéVA — Réaliser Votre Ambition';
+
+  let titleDefault = 'RéVA — Réaliser Votre Ambition | Société de développement logiciel & de test informatique';
   let description =
-    'RÉVA Consulting est une société d’ingénierie logicielle et éditeur d’Élancé ERP en Tunisie. Spécialiste du développement logiciel sur-mesure, des applications web & mobiles, des tests logiciels et de l’automatisation QA.';
+    'RéVA — Réaliser Votre Ambition est une société d’ingénierie logicielle et éditeur d’Élancé ERP en Tunisie. Spécialiste du développement logiciel sur-mesure, des applications web & mobiles, des tests logiciels et de l’automatisation QA.';
   let keywords: string[] = [...TARGET_KEYWORDS_FR];
   let ogLocale = 'fr_FR';
   let alternateLocales = ['en_US', 'ar_TN'];
 
   if (isEn) {
-    titleDefault = 'RÉVA Consulting — Software Development & QA Testing Engineering';
+    titleDefault = 'ACYA — AChieve Your Ambition | Software Development & QA Testing Engineering';
     description =
-      'RÉVA Consulting is a software engineering company and publisher of Élancé ERP in Tunisia. Specialized in custom software development, web & mobile applications, software testing, and QA automation.';
+      'ACYA — AChieve Your Ambition is a software engineering company and publisher of Élancé ERP in Tunisia. Specialized in custom software development, web & mobile applications, software testing, and QA automation.';
     keywords = [...TARGET_KEYWORDS_EN];
     ogLocale = 'en_US';
     alternateLocales = ['fr_FR', 'ar_TN'];
   } else if (isAr) {
-    titleDefault = 'ريفا كونسلتينغ — هندسة وتطوير البرمجيات وفحص الأنظمة المعلوماتية';
+    titleDefault = 'استشارات حقق طموحك | هندسة وتطوير البرمجيات وفحص الأنظمة المعلوماتية';
     description =
-      'ريفا كونسلتينغ هي شركة متخصصة في هندسة وتطوير البرمجيات وناشر نظام إيلانسي ERP في تونس. حلول برمجية مخصصة، تطبيقات ويب وهاتف وأتمتة شاملة لفحص الجودة.';
+      'استشارات حقق طموحك هي شركة متخصصة في هندسة وتطوير البرمجيات وناشر نظام إيلانسي ERP في تونس. حلول برمجية مخصصة، تطبيقات ويب وهاتف وأتمتة شاملة لفحص الجودة.';
     keywords = [...TARGET_KEYWORDS_AR];
     ogLocale = 'ar_TN';
     alternateLocales = ['fr_FR', 'en_US'];
@@ -104,13 +110,13 @@ export function buildLocalizedMetadata(locale: string): Metadata {
   return {
     title: {
       default: titleDefault,
-      template: `%s | ${brandConfig.name}`,
+      template: `%s | ${localizedBrand}`,
     },
     description,
     keywords,
-    authors: [{ name: 'RÉVA Consulting', url: baseUrl }],
-    creator: 'RÉVA Consulting',
-    publisher: 'RÉVA Consulting',
+    authors: [{ name: localizedBrand, url: baseUrl }],
+    creator: localizedBrand,
+    publisher: localizedBrand,
     metadataBase: new URL(baseUrl),
     alternates: {
       canonical: `${baseUrl}/${locale}`,
@@ -125,7 +131,7 @@ export function buildLocalizedMetadata(locale: string): Metadata {
       title: titleDefault,
       description,
       url: `${baseUrl}/${locale}`,
-      siteName: brandConfig.name,
+      siteName: localizedBrand,
       locale: ogLocale,
       alternateLocale: alternateLocales,
       type: 'website',
@@ -134,7 +140,7 @@ export function buildLocalizedMetadata(locale: string): Metadata {
           url: `${baseUrl}/images/logos/logo-reva.jpeg`,
           width: 1599,
           height: 1076,
-          alt: `${brandConfig.name} — Développer. Tester. Optimiser.`,
+          alt: localizedBrand,
         },
       ],
     },
@@ -183,6 +189,11 @@ export function getOrganizationStructuredData() {
     '@id': `${baseUrl}/#organization`,
     name: brandConfig.name,
     legalName: brandConfig.legalName,
+    alternateName: [
+      'RéVA — Réaliser Votre Ambition',
+      'ACYA — AChieve Your Ambition',
+      'استشارات حقق طموحك',
+    ],
     url: baseUrl,
     logo: {
       '@type': 'ImageObject',
